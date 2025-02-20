@@ -1,21 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Menu from "./components/Menu";
+import RatePlayer from "./pages/RatePlayer";
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <div className="App-logo">FMAPP</div>  {/*zrobić logo*/}
-      <nav className="menu">
-        <ul>
-          <li><a href="" className='App-link'>Compare</a> </li>
-          <li><a href="" className='App-link'>Rate my Player</a></li>
-          <li><a href="" className='App-link'>Track Progress</a></li>
-        </ul>
-      </nav>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+        <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+        <main>
+          <Routes>
+            <Route path="/" element={<h1>Welcome to AskMngr</h1>} />
+            <Route path="/rate-player" element={<RatePlayer />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 

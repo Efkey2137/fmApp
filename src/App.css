@@ -1,71 +1,174 @@
-.App-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1dvh 2dvw; /* Dynamiczny padding */
-  background-color: #282c34;
-  min-height: 10dvh; /* Wysokość dopasowana do urządzenia */
+/* GLOBAL SETTINGS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+* {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  background: #333;
+  color: #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.App {
+  display: grid;
+  grid-template-rows: 10dvh auto;
+  grid-template-columns: 18dvw auto;
+  height: 100vh;
+}
+
+/* HEADER SETTINGS */
+.App-header {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #222831;
+  height: 10dvh;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 0 2dvw;
+}
+
+.App-logo {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #00adb5;
+  text-decoration: none;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  color: #00adb5;
+  cursor: pointer;
+}
+
+/* MENU SETTINGS */
 .menu {
-  height: 10dvh; /* Dopasowanie do wysokości paska */
-  width: 50dvw; /* Menu zajmuje 50% szerokości ekranu */
+  grid-row: 2;
+  grid-column: 1;
+  background-color: #1b1b1b;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding-top: 2dvh;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
 }
 
 .menu ul {
   list-style: none;
-  display: flex;
-  gap: 2dvw;
   padding: 0;
   margin: 0;
-  height: 100%;
+  width: 100%;
 }
 
 .menu li {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
-  height: 100%;
-}
-
-/* Efekt poświaty na cały blok */
-.menu li::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 2dvh rgba(255, 255, 255, 0.3);
-  border-radius: 0.5dvh;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  z-index: 0;
-}
-
-.menu li:hover::before {
-  opacity: 1;
+  text-align: left;
 }
 
 .App-link {
+  display: block;
+  color: #eeeeee;
   text-decoration: none;
-  color: white;
-  font-size: 2dvh; /* Skalowane według wysokości ekranu */
-  padding: 2dvh 3dvw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 1;
+  padding: 2.5dvh;
+  font-size: 1.9dvh;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
 }
 
 .App-link:hover {
-  background: #131518;
-  color: #1462ff;
+  background: #393e46;
+  color: #00adb5;
+  border-left: 4px solid #00adb5;
+}
+
+/* MAIN CONTENT */
+main {
+  grid-column: 2;
+  grid-row: 2;
+  padding: 2dvh;
+  overflow-y: auto;
+}
+
+/* MOBILE VERSIONS */
+@media (max-width: 768px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 10dvw;
+    height: 10dvh;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .menu-toggle .bar {
+    width: 8dvw;
+    height: 0.5dvh;
+    background-color: #00adb5;
+    margin: 0.5dvh 0;
+    transition: 0.4s;
+  }
+
+  .menu-toggle.open .top {
+    transform: translateY(1.5dvh) rotate(45deg);
+  }
+
+  .menu-toggle.open .middle {
+    opacity: 0;
+  }
+
+  .menu-toggle.open .bottom {
+    transform: translateY(-1.5dvh) rotate(-45deg);
+  }
+
+  .menu {
+    position: absolute;
+    top: 8dvh;
+    left: 0;
+    width: 100%;
+    background: #1b1b1b;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 2dvh 0;
+  }
+
+  .menu.active {
+    display: flex;
+  }
+
+  .menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2dvh;
+  }
+
+  .menu li {
+    text-align: center;
+  }
+
+  .App-link {
+    font-size: 2dvh;
+    padding: 1.5dvh 2dvw;
+  }
 }
