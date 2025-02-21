@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Menu from "./components/Menu";
 import RatePlayer from "./pages/RatePlayer";
+import TrackProgress from "./pages/TrackProgress";
+import Compare from "./pages/Compare";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,6 +18,8 @@ function App() {
           <Routes>
             <Route path="/" element={<h1>Welcome to AskMngr</h1>} />
             <Route path="/rate-player" element={<RatePlayer />} />
+            <Route path="/compare" element={<Compare />} />
+            <Route path="/track-progress" element={<TrackProgress />} />
           </Routes>
         </main>
       </div>
