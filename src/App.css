@@ -122,10 +122,35 @@ main::-webkit-scrollbar-thumb {
 main::-webkit-scrollbar-thumb:hover {
   background: #7a50cc;
 }
+.wonderkids{
+  display: flex;
+  flex-direction: column;;
+  width: 100%;
+  text-align: center;
+}
+.wonderkids h1{
+  font-size: 3dvh;
+  margin-top: 2dvh;
+}
+.wonderkids p{
+  text-align: left;
+  font-size: 1.5dvh;
+  margin-top: 1dvh;
+}
+.wonderkids-table-container{
+  overflow-x: auto;
+  margin-top: 5dvh;
+}
+.wonderkids-table-container h2{
+  font-size: 2.5dvh;
+  margin-top: 2dvh;
+}
 
 .wonderkids-table{
+  margin-top: 1dvh;
   width: 100%;
   border-collapse: collapse;
+  text-align: left;
 }
 .wonderkids-table th{
   background-color: #9a66ff;
