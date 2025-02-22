@@ -14,6 +14,8 @@ const Menu: React.FC<MenuProps> = ({ menuOpen }) => {
         <li><Link to="/compare" className="App-link">Compare</Link></li>
         <li><Link to="/rate-player" className="App-link">Rate Player</Link></li>
         <li><Link to="/track-progress" className="App-link">Track Progress</Link></li>
+        <li><Link to="/wonderkids" className="App-link">Wonderkids</Link></li>
+        <li><Link to="/save-ideas" className="App-link">Save Ideas</Link></li>
       </ul>
     </nav>
   );

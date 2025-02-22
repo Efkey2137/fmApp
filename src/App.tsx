@@ -6,6 +6,8 @@ import Menu from "./components/Menu";
 import RatePlayer from "./pages/RatePlayer";
 import TrackProgress from "./pages/TrackProgress";
 import Compare from "./pages/Compare";
+import Wonderkids from "./pages/Wonderkids";
+import SaveIdeas from "./pages/SaveIdeas";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -23,6 +25,8 @@ function App() {
             <Route path="/rate-player" element={<RatePlayer />} />
             <Route path="/compare" element={<Compare />} />
             <Route path="/track-progress" element={<TrackProgress />} />
+            <Route path="/save-ideas" element={<SaveIdeas />} />
+            <Route path="/wonderkids" element={<Wonderkids />} />
           </Routes>
         </main>
       </div>
@@ -31,3 +35,4 @@ function App() {
 }
 
 export default App;
+

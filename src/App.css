@@ -43,6 +43,10 @@ body {
   color: #00adb5;
   text-decoration: none;
 }
+.logo-img{
+  width: 7.5dvh;
+  height: 7.5dvh;
+}
 
 .menu-toggle {
   display: none;
