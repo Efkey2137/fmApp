@@ -30,7 +30,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #222831;
+  background-color: #222031;
   height: 10dvh;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 0 2dvw;
@@ -40,7 +40,7 @@ body {
   font-size: 2.5rem;
   font-weight: bold;
   text-transform: uppercase;
-  color: #00adb5;
+  color: #9a66ff;
   text-decoration: none;
 }
 .logo-img{
@@ -51,7 +51,7 @@ body {
 .menu-toggle {
   display: none;
   font-size: 2rem;
-  color: #00adb5;
+  color: #9a66ff;
   cursor: pointer;
 }
 
@@ -92,9 +92,9 @@ body {
 }
 
 .App-link:hover {
-  background: #393e46;
-  color: #00adb5;
-  border-left: 4px solid #00adb5;
+  background: #393046;
+  color: #9a66ff;
+  border-left: 4px solid #9a66ff;
 }
 
 /* MAIN CONTENT */
@@ -103,6 +103,48 @@ main {
   grid-row: 2;
   padding: 2dvh;
   overflow-y: auto;
+}
+
+/* Custom scrollbar */
+main::-webkit-scrollbar {
+  width: 8px;
+}
+
+main::-webkit-scrollbar-track {
+  background: #1b1b1b;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: #9a66ff;
+  border-radius: 4px;
+}
+
+main::-webkit-scrollbar-thumb:hover {
+  background: #7a50cc;
+}
+
+.wonderkids-table{
+  width: 100%;
+  border-collapse: collapse;
+}
+.wonderkids-table th{
+  background-color: #9a66ff;
+  color: #eeeeee;
+  padding: 1dvh;
+  text-align: left;
+}
+.wonderkids-table td{
+  padding: 1dvh;
+  border-bottom: 1px solid #393046;
+}
+.wonderkids-table tr:hover{
+  background-color: #393046;
+}
+.wonderkids-table tr:nth-child(even){
+  background-color: #222031;
+}
+.wonderkids-table tr:nth-child(odd){
+  background-color: #1b1b1b;
 }
 
 /* MOBILE VERSIONS */
@@ -128,7 +170,7 @@ main {
   .menu-toggle .bar {
     width: 8dvw;
     height: 0.5dvh;
-    background-color: #00adb5;
+    background-color: #9a66ff;
     margin: 0.5dvh 0;
     transition: 0.4s;
   }
