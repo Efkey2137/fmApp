@@ -122,6 +122,7 @@ main::-webkit-scrollbar-thumb {
 main::-webkit-scrollbar-thumb:hover {
   background: #7a50cc;
 }
+
 .wonderkids{
   display: flex;
   flex-direction: column;;
@@ -141,6 +142,24 @@ main::-webkit-scrollbar-thumb:hover {
   overflow-x: auto;
   margin-top: 5dvh;
 }
+.wonderkids-table-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.wonderkids-table-container::-webkit-scrollbar-track {
+  background: #1b1b1b;
+}
+
+.wonderkids-table-container::-webkit-scrollbar-thumb {
+  background: #9a66ff;
+  border-radius: 4px;
+}
+
+.wonderkids-table-container::-webkit-scrollbar-thumb:hover {
+  background: #7a50cc;
+}
+
+
 .wonderkids-table-container h2{
   font-size: 2.5dvh;
   margin-top: 2dvh;
@@ -163,7 +182,9 @@ main::-webkit-scrollbar-thumb:hover {
   border-bottom: 1px solid #393046;
 }
 .wonderkids-table tr:hover{
-  background-color: #393046;
+  /* background-color: #393046; */
+  background-color: #000000;
+  cursor: pointer;
 }
 .wonderkids-table tr:nth-child(even){
   background-color: #222031;

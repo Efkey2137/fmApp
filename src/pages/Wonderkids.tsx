@@ -3,6 +3,7 @@ import useFetch from "../hooks/useFetch";
 
 const Wonderkids: React.FC = () => {
     const { fetchCsvData } = useFetch();
+    const [data140, setData140] = useState<any[]>([]);
     const [data150, setData150] = useState<any[]>([]);
     const [data160, setData160] = useState<any[]>([]);
     const [data170, setData170] = useState<any[]>([]);
@@ -19,6 +20,7 @@ const Wonderkids: React.FC = () => {
             });
         };
 
+        loadCsvData("./140plus.csv", setData140);
         loadCsvData("./150plus.csv", setData150);
         loadCsvData("./160plus.csv", setData160);
         loadCsvData("./170plus.csv", setData170);
@@ -62,9 +64,10 @@ const Wonderkids: React.FC = () => {
         <div className="wonderkids">
             <h1>Wonderkids – The Future Stars of Football</h1>
             <p>This section features a list of the most talented young players recognized as wonderkids. The tables include players who are expected to reach at least the specified potential level. These are footballers who could become key figures in top leagues—and some may even rise to legendary status in world football!</p>
-            {renderTable(data170, "Potential to be World Class Player")}
-            {renderTable(data160, "Potential to be Top in Top Leagues")}
-            {renderTable(data150, "Potential to be Solid in Top Leagues")}
+            {renderTable(data170, "Potential to be at least World Class Player")}
+            {renderTable(data160, "Potential to be at least Top in Top Leagues")}
+            {renderTable(data150, "Potential to be at least Solid in Top Leagues")}
+            {renderTable(data140, "Potential to be at least Solid in Good Leagues")}
         </div>
     );
 };
