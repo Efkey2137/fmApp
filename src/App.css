@@ -235,7 +235,7 @@ main::-webkit-scrollbar-thumb:hover {
 
   .menu {
     position: absolute;
-    top: 8dvh;
+    top: 10dvh;
     left: 0;
     width: 100%;
     background: #1b1b1b;
