@@ -122,7 +122,7 @@ main::-webkit-scrollbar-thumb {
 main::-webkit-scrollbar-thumb:hover {
   background: #7a50cc;
 }
-
+/* WONDERKIDS PAGE */
 .wonderkids{
   display: flex;
   flex-direction: column;;
@@ -130,7 +130,7 @@ main::-webkit-scrollbar-thumb:hover {
   text-align: center;
 }
 .wonderkids h1{
-  font-size: 3dvh;
+  font-size: 4dvh;
   margin-top: 2dvh;
 }
 .wonderkids p{
@@ -182,8 +182,7 @@ main::-webkit-scrollbar-thumb:hover {
   border-bottom: 1px solid #393046;
 }
 .wonderkids-table tr:hover{
-  /* background-color: #393046; */
-  background-color: #000000;
+  background-color: #393046;
   cursor: pointer;
 }
 .wonderkids-table tr:nth-child(even){
@@ -192,6 +191,42 @@ main::-webkit-scrollbar-thumb:hover {
 .wonderkids-table tr:nth-child(odd){
   background-color: #1b1b1b;
 }
+
+/* SaveIdeas Page */
+.save-ideas-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.save-ideas-container h1{
+  font-size: 4dvh;
+  margin-top: 2dvh;
+  text-align: center;
+}
+.save-ideas{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+}
+.save-ideas-category{
+  display: flex;
+  flex-direction: column;
+  margin-top: 2dvh;
+  padding-bottom: 2dvh;
+  border-bottom: 4px solid #7a50cc;
+}
+.save-ideas-category h2{
+  color: #c6a9ff;
+  font-size: 3dvh;
+  margin-top: 2dvh;
+}
+.title{
+  font-size: 2.5dvh;
+  margin-top: 2dvh;
+  
+}
+
 
 /* MOBILE VERSIONS */
 @media (max-width: 768px) {
