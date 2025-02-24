@@ -1,0 +1,38 @@
+h1{
+    font-size: 2rem;
+    text-align: center;
+}
+.save-ideas-category{
+    margin-top: 2dvh;
+}
+.save-ideas-category h2{
+    font-size: 1.5rem;
+    margin: 0 0 1dvh 0;
+    text-align: center;
+}
+.save-idea-item{
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 1dvh;
+    margin-top: 1dvh;
+    border: 2px solid #9a66ff;
+    border-radius: 4px;
+    background-color: #1b1b1b;
+    color: #e0e0e0;
+    font-size: 1rem;
+    transition: border-color 0.3s ease-in-out;
+}
+.save-idea-item .title{
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    padding: 1dvh 0;
+}
+.save-idea-item:hover{
+    border-color: #7a50cc;
+}

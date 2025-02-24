@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
+import "../css/SaveIdeas.css";
 
 const SaveIdeas: React.FC = () => {
   const { fetchCsvData } = useFetch();
@@ -36,7 +37,7 @@ const SaveIdeas: React.FC = () => {
   const groupedData = groupByCategory(data);
 
   return (
-    <div className="save-ideas-container">
+    <div className="save-ideas">
       <h1>Save Ideas</h1>
       {Object.entries(groupedData).map(([category, items]) => (
         <div key={category} className="save-ideas-category">

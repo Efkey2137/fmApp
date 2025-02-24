@@ -1,0 +1,71 @@
+/* HEADER SETTINGS */
+.App-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #222031;
+    height: 10dvh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 0 2dvw;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+
+.App-logo {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #9a66ff;
+    text-decoration: none;
+}
+
+.logo-img {
+    width: 7dvh;
+    height: 7dvh;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    color: #9a66ff;
+    cursor: pointer;
+}
+
+/* MOBILE VERSION */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 10dvw;
+        height: 10dvh;
+        background: none;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        z-index: 11;
+    }
+
+    .menu-toggle .bar {
+        width: 8dvw;
+        height: 0.5dvh;
+        background-color: #9a66ff;
+        margin: 0.5dvh 0;
+        transition: 0.4s;
+    }
+
+    .menu-toggle.open .top {
+        transform: translateY(1.5dvh) rotate(45deg);
+    }
+
+    .menu-toggle.open .middle {
+        opacity: 0;
+    }
+
+    .menu-toggle.open .bottom {
+        transform: translateY(-1.5dvh) rotate(-45deg);
+    }
+}

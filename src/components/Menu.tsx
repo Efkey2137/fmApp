@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../css/Menu.css";
 import { House, Diff, Star, ChartLine, Lightbulb, SearchCheck  } from 'lucide-react';
 
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ArrowBigDown, ArrowBigUp } from 'lucide-react';
 import useFetch from "../hooks/useFetch";
+import "../css/Wonderkids.css";
 
 const Wonderkids: React.FC = () => {
     const { fetchCsvData } = useFetch();

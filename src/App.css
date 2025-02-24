@@ -21,95 +21,8 @@ body {
   display: flex;
   flex-direction: row;
   height: 100vh;
-  margin-top: 10dvh;
   user-select: none;
 }
-
-/* HEADER SETTINGS */
-.App-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #222031;
-  height: 10dvh;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 0 2dvw;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 10;
-}
-
-.App-logo {
-  font-size: 2rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #9a66ff;
-  text-decoration: none;
-}
-
-.logo-img {
-  width: 7dvh;
-  height: 7dvh;
-}
-
-.menu-toggle {
-  display: none;
-  font-size: 2rem;
-  color: #9a66ff;
-  cursor: pointer;
-}
-
-/* MENU SETTINGS */
-.menu {
-  background-color: #1b1b1b;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 18dvw;
-  height: 100vh;
-  padding-top: 12dvh; /* Adjust for fixed header height */
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-  overflow-y: auto;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-.menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-}
-
-.menu li {
-  width: 100%;
-  text-align: left;
-}
-
-.App-link {
-  display: block;
-  color: #eeeeee;
-  text-decoration: none;
-  padding: 2.5dvh;
-  font-size: 1.2rem;
-  font-weight: 600;
-  transition: all 0.3s ease-in-out;
-  display: flex;
-  align-items: center;
-}
-
-.App-link svg {
-  margin-right: 0.5dvw;
-}
-
-.App-link:hover {
-  background: #393046;
-  color: #9a66ff;
-  border-left: 4px solid #9a66ff;
-}
-
 /* MAIN CONTENT */
 main {
   margin-left: 18dvw; /* Same width as the menu */
@@ -137,111 +50,8 @@ main::-webkit-scrollbar-thumb:hover {
   background: #7a50cc;
 }
 
-/* WONDERKIDS PAGE */
-.wonderkids {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  text-align: center;
-  overflow-x: hidden; /* Zapobiega przewijaniu strony w poziomie */
-}
 
-.wonderkids h1 {
-  font-size: 2rem;
-  margin-top: 2dvh;
-}
-
-.wonderkids p {
-  text-align: left;
-  font-size: 1rem;
-  margin-top: 1dvh;
-}
-
-.search-box {
-  width: 100%;
-  padding: 1dvh;
-  margin-top: 2dvh;
-  border: 1px solid #9a66ff;
-  border-radius: 4px;
-  background-color: #1b1b1b;
-  color: #e0e0e0;
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.3s ease-in-out;
-}
-
-.search-box:focus {
-  border-color: #7a50cc;
-}
-
-.wonderkids-table {
-  overflow-x: auto; /* Pozwala na przewijanie tabeli w poziomie */
-  margin-top: 5dvh;
-  width: 100%; /* Zajmuje całą szerokość kontenera */
-  border-collapse: collapse;
-  text-align: left;
-  user-select: text;
-}
-
-.wonderkids-table::-webkit-scrollbar {
-  height: 8px;
-}
-
-.wonderkids-table::-webkit-scrollbar-track {
-  background: #1b1b1b;
-}
-
-.wonderkids-table::-webkit-scrollbar-thumb {
-  background: #9a66ff;
-  border-radius: 4px;
-}
-
-.wonderkids-table::-webkit-scrollbar-thumb:hover {
-  background: #7a50cc;
-}
-
-.wonderkids-table h2 {
-  font-size: 1.5rem;
-  margin: 0 0 1dvh 0;
-}
-
-.wonderkids-table th {
-  vertical-align: middle;
-  padding: 1dvh;
-}
-
-.wonderkids-table th svg {
-  vertical-align: middle;
-}
-
-.wonderkids-table .sortable-header {
-  background-color: #9a66ff;
-  color: #eeeeee;
-  padding: 1dvh;
-  text-align: left;
-  min-width: 61px;
-  cursor: pointer;
-}
-
-.wonderkids-table td {
-  padding: 1dvh;
-  border-bottom: 1px solid #393046;
-}
-
-.wonderkids-table tr:hover {
-  background-color: #393046 !important;
-  cursor: pointer;
-}
-
-.wonderkids-table tr:nth-child(even) {
-  background-color: #222031;
-}
-
-.wonderkids-table tr:nth-child(odd) {
-  background-color: #1b1b1b;
-}
-
-/* MOBILE VERSIONS */
+/* MOBILE VERSIONS
 @media (max-width: 768px) {
   .App {
     flex-direction: column;
@@ -329,9 +139,9 @@ main::-webkit-scrollbar-thumb:hover {
   }
 
   /* Zmiany dla tabeli na urządzeniach mobilnych */
-  .wonderkids-table {
+  /* .wonderkids-table {
     width: 100%;
     overflow-x: auto; /* Tylko tabela przesuwa się w poziomie */
-    display: block; /* Umożliwia poziome przewijanie */
-  }
-}
+    /* display: block; Umożliwia poziome przewijanie */
+  /* } */
+/* } */

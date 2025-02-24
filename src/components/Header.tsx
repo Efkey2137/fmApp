@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "../App.css";
+import "../css/Header.css";
 
 const Header: React.FC<{ menuOpen: boolean; setMenuOpen: (open: boolean) => void }> = ({ menuOpen, setMenuOpen }) => {
   return (
