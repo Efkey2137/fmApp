@@ -1,161 +1,162 @@
 Name;Age;Club;Country;Position
-Amidou Doumbouya;15;OGC Nice;France;
-Harry Amass;16;Manchester United;England;
-Marc Bernal;16;FC Barcelona;Spain;
+Amidou Doumbouya;15;OGC Nice;France;DC, DM
+Harry Amass;16;Manchester United;England;DL
+Marc Bernal;16;FC Barcelona;Spain;DM, CM
 Pau Cubarsi;16;FC Barcelona;Spain;DC
-Daniel Daga;16;FC One Rocket;Nigeria;
+Daniel Daga;16;FC One Rocket;Nigeria;DM, CM
 Hector Fort;16;FC Barcelona;Spain;DR
-George Ilenikhena;16;Royal Antwerp FC;France;
-Lucas Jetten;16;AFC Ajax;Netherlands;
-Jonah Kusi-Asare;16;Bayern Munchen;Sweden;
-Shea Lacey;16;Manchester United;England;
-Myles Lewis-Skelly;16;Arsenal;England;
-Callan McKenna;16;Bournemouth;Scotland;
-Rayan;16;Vasco da Gama;Brasil;
-Chris Rigg;16;Sunderland;England;
-Fillipi Riquelme;16;SE Palmeiras;Brasil;
-Ryan Franscisco;16;Sao Paulo FC;Brasil;
-Trevan Sanusi;16;Newcastle;England;
-Gabriel Silva;16;Sporting;Portugal;
-Enzo Sternal;16;Olimpique de Marseille;France;
+George Ilenikhena;16;Royal Antwerp FC;France;ST
+Lucas Jetten;16;AFC Ajax;Netherlands;DC, DL
+Jonah Kusi-Asare;16;Bayern Munchen;Sweden;ST
+Shea Lacey;16;Manchester United;England;AM, AMR
+Myles Lewis-Skelly;16;Arsenal;England;DM, CM
+Callan McKenna;16;Bournemouth;Scotland;GK
+Rayan;16;Vasco da Gama;Brasil;AMR, ST
+Chris Rigg;16;Sunderland;England;DM, CM, AM
+Riquelme Fillipi;16;SE Palmeiras;Brasil;AMR, AML, ST
+Ryan Franscisco;16;Sao Paulo FC;Brasil;ST
+Trevan Sanusi;16;Newcastle;England;AML
+Gabriel Silva;16;Sporting;Portugal;ST
+Enzo Sternal;16;Olimpique de Marseille;France;AML, AM, ST
 Luka Vuskovic;16;HNK Hajduk Split;Croatia;DC
-Jayden Addai;17;AZ Alkmaar;Netherlands;
-Sam Amo-Ameyaw;17;Southampton;England;
-Roony Bardghji;17;FC Kobenhavn;Sweden;AMR, AML
-Lucas Bergvall;17;Djurgardens Idrottsforening;Sweden;
-Saimon Bouabre;17;AS Monaco;France;
-Kail Boudache;17;OGC Nice;France;
-Rayane Bounida;17;AFC Ajax;Belgium;
-Ethan Butera;17;AFC Ajax;Belgium;
-Tyler Dibling;17;Southampton;England;
-Martim Fernandes;17;Porto;Portugal;
-Gabriel Moscardo;17;PSG;Brasil;
-Jasper Hartog;17;AZ Alkmaar;Netherlands;
-Nestory Irankunda;17;Adelaide United FC;Australia;
-Omari Kellyman;17;Aston Villa;England;
-Semih Kilicsoy;17;Besiktas;Turkey;
-Gael Lafont;17;Olimpique de Marseille;France;
-Mathis Lambourde;17;Stade Rennais FC;France;
-Tygo Land;17;PSV;Netherlands;
-David Martinez;17;Los Angeles FC;Venezuela;
-Enoch Mastoras;17;AZ Alkmaar;Netherlands;
-Matheus Goncalves;17;Flamengo;Brasil;
-Bastien Meupiyou;17;FC Nantes;France;
-Lewis Miley;17;Newcastle;England;DM, CM
-Jano Monserrate;17;Atletico Madrid;Spain;
-Goncalo Moreira;17;Benfica;Portugal;
-Allen Obando;17;Barcelona S.C.;Ecuador;
-Oscar Perea;17;Nacional;Columbia;
-Matija Popovic;17;Monza;Serbia;
-Gianluca Prestianni;17;CA Velez Sarsfield;Argentina;
+Jayden Addai;17;AZ Alkmaar;Netherlands;AMR, AML
+Sam Amo-Ameyaw;17;Southampton;England;AMR, AML, ST
+Roony Bardghji;17;FC Kobenhavn;Sweden;AMR
+Lucas Bergvall;17;Djurgardens Idrottsforening;Sweden;DM, CM, AM
+Saimon Bouabre;17;AS Monaco;France;CM, AM
+Kail Boudache;17;OGC Nice;France;AMR
+Rayane Bounida;17;AFC Ajax;Belgium;AMR, AML, AM
+Ethan Butera;17;AFC Ajax;Belgium;DC, DM
+Tyler Dibling;17;Southampton;England;CM, AMR, AML, AM
+Martim Fernandes;17;Porto;Portugal;DR
+Gabriel Moscardo;17;PSG;Brasil;DM
+Jasper Hartog;17;AZ Alkmaar;Netherlands;AMR, AML
+Nestory Irankunda;17;Adelaide United FC;Australia;AMR, AML
+Omari Kellyman;17;Aston Villa;England;AMR, AML, AM, ST
+Semih Kilicsoy;17;Besiktas;Turkey;AMR, AML, ST
+Gael Lafont;17;Olimpique de Marseille;France;CM, AM
+Mathis Lambourde;17;Stade Rennais FC;France;AMR, ST
+Tygo Land;17;PSV;Netherlands;DM, CM, AM
+David Martinez;17;Los Angeles FC;Venezuela;AMR, AML, AM
+Enoch Mastoras;17;AZ Alkmaar;Netherlands;DC, DR, DM, CM
+Matheus Goncalves;17;Flamengo;Brasil;AMR
+Bastien Meupiyou;17;FC Nantes;France;DC, DM
+Lewis Miley;17;Newcastle;England;DM, CM, AM
+Jano Monserrate;17;Atletico Madrid;Spain;CM, AM
+Goncalo Moreira;17;Benfica;Portugal;AMR, AML, AM
+Allen Obando;17;Barcelona S.C.;Ecuador;ST
+Oscar Perea;17;Nacional;Columbia;AML
+Matija Popovic;17;Monza;Serbia;AML, AM ST
+Gianluca Prestianni;17;CA Velez Sarsfield;Argentina;AMR, AML, AM
 Dennis Seimen;17;VfB Stuttgart;Germany;GK
-Kees Smit;17;AZ Alkmaar;Netherlands;
-Can Uzun;17;1. FC Nurnberg;Turkey;
-Jaime Vazquez;17;Real Oviedo;Spain;
-Iker Villar;17;Sevilla;Spain;
-Skye Vink;17;AFC Ajax;Netherlands;
+Kees Smit;17;AZ Alkmaar;Netherlands;DM, CM, AM
+Can Uzun;17;1. FC Nurnberg;Turkey;CM ,AM, ST
+Jaime Vazquez;17;Real Oviedo;Spain;DC
+Iker Villar;17;Sevilla;Spain;ST
+Skye Vink;17;AFC Ajax;Netherlands;ST
 Vitor Reis;17;SE Palmeiras;Brasil;DC
-William Gomes;17;Sao Paulo FC;Brasil;
-Kadan Young;17;Aston Villa;England;
-Isaac Babadi;18;PSV;Netherlands;
-Jeanuel Belocian;18;Stade Rennais FC;France;
-Tom Bischof;18;Hoffenheim;Germany;
-El Chadaille Bitshiabu;18;RB Leipzig;France;
-Jamie Bynoe-Gittens;18;Borrusia Dortmund;England;
-Valentin Carboni;18;Inter Milan;Argentina;
-Deivid Washington;18;Chelsea;Brasil;
-Jamie Donley;18;Tottenham;Northern Ireland;
-Patrick Dorgu;18;Lecce;Denmark;
-Alfie Dorrington;18;Tottenham;England;
-Francesco Pio Esposito;18;Inter Milan;Italy;
-Malick Fofana;18;Olimpique Lyon;Belgium;
-Jack Hinshelwood;18;Brighton;England;
+William Gomes;17;Sao Paulo FC;Brasil;AMR, AML, ST
+Kadan Young;17;Aston Villa;England;AMR, AML
+Isaac Babadi;18;PSV;Netherlands;CM, AMR, AML, AM
+Jeanuel Belocian;18;Stade Rennais FC;France;DL, DC, DM
+Tom Bischof;18;Hoffenheim;Germany;DM, CM, AM
+El Chadaille Bitshiabu;18;RB Leipzig;France;DL, DC
+Jamie Bynoe-Gittens;18;Borrusia Dortmund;England;AMR, AML
+Valentin Carboni;18;Inter Milan;Argentina;AMR, AM, ST
+Deivid Washington;18;Chelsea;Brasil;ST
+Jamie Donley;18;Tottenham;Northern Ireland;AM, ST
+Patrick Dorgu;18;Lecce;Denmark;DL, ML
+Alfie Dorrington;18;Tottenham;England;DC
+Francesco Pio Esposito;18;Inter Milan;Italy;ST
+Malick Fofana;18;Olimpique Lyon;Belgium;AMR, AML
+Jack Hinshelwood;18;Brighton;England;DR, DM, CM
 Dean Huijsen;18;Juvenlose;Netherlands;DC
-Heriberto Jurado;18;Club Necaxa;Mexico;
-David Kalokoh;18;AFC Ajax;Netherlands;
-Kari Ayman;18;PSG;France;
-Will Lankshear;18;Tottenham;England;
-Luca Lipani;18;Sassuolo;Italy;
-Rafael Luis;18;Benfica;Portugal;
-Antoni Milambo;18;Feyenoord;Netherlands;
-Gabriel Misehouy;18;AFC Ajax;Netherlands;
-Alfonso Moreira;18;Sporting;Portugal;
-Nico Paz;18;Real Madrid;Argentina;
-Antonio Nusa;18;Club Brugge;Norway;
-Ashley Phillips;18;Tottenham;England;
-Sergey Pinyaev;18;FC Lokomotiv Moscow;Russia;
-Rodrigo Ribeiro;18;Sporting;Portugal;
-Guilherme Santos;18;Sporting;Portugal;
-Jevon Simons;18;PSV;Netherlands;
-Ayanda Sishuba;18;RC Lens;Belgium;
-Jason van Duiven;18;PSV;Netherlands;
-Joao Veloso;18;Benfica;Portugal;
-Arthur Vermeeren;18;Atletico Madrid;Belgium;
-Silvano Vos;18;AFC Ajax;Netherlands;
-Ilias Akhomach;19;Villareal;Spain;
-Andrey Santos;19;Chelsea;Brasil;
-Samson Baidoo;19;RB Salzburg;Austria;
-Berdaldo;19;PSG;Brasil;
-Carlos Borges;19;AFC Ajax;Portugal;
-Sammy Braybrooke;19;Leicester City;England;
-Rayan Cherki;19;Olympique Lyon;France;
-Carney Chukwuemeka;19;Chelsea;England;
-Zeno Debast;19;Anderlecht;Belgium;
-Diego Callai;19;Sporting;Brasil;
-Callum Doyle;19;Manchester City;England;
-Mohamed El Arouch;19;Olimpique Lyon;France;
-Bilal El Khannouss;19;RC Genk;Morocco;
-Giacomo Faticanti;19;Lecce;Italy;
-Hugo Felix;19;Benfica;Portugal;
-Mateus Fernandes;19;Sporting;Portugal;
-Giovani;19;As-Sadd;Brasil;
-Lucas Gourna-Douath;19;RB Salzburg;France;
-Julen Jon Guerrero;19;Deportivo Alaves;Spain;
-Habib Diarra;19;Strasbourg;France;
-Luis Hasa;19;Juvenlose;Italy;
-Samuel Iling;19;Juvenlose;England;
-Milos Kerkez;19;Bournemouth;Hungary;
-Hugo Larsson;19;Eintracht Frankfurt;Sweden;
-Franca Matheus;19;Crystal Palace;Brasil;
-Yankuba Minteh;19;Newcastle;Gambia;
-Alberto Moleiro;19;Las Palmas;Spain;
-Christhian Mosquera;19;Valencia;Spain;
-Ernest Nuamah;19;Molenbeek;Ghana;
-Rome-Jayden Owusu-Oduro;19;AZ Alkmaar;Netherlands;
-Estanis Pedrola;19;FC Barcelona;Spain;
-Ernest Poku;19;AZ Alkmaar;Netherlands;
-Matteo Prati;19;Cagliari;Italy;
-Robert Renan;19;FC Zenit;Brasil;
-Alvaro Rodriguez;19;Real Madrid;Uruguay;
-Jude Soonsup-Bell;19;Tottenham;England;
-Williot Swedberg;19;Celta Vigo;Sweden;
-Lesley Ugochukwu;19;Chelsea ;France;
-Jonas Urbig;19;1. FC Koln;Niemcy;
-Samuele Vignato;19;Monza;Italy;
-Yehor Yarmoliuk;19;Brentford;Ukraine;
-Oscar Zambrano;19;Liga Deportiva Universitaria;Ecuador;
-Elliot Anderson;20;Newcastle;Scotland;
-Johan Bakayoko;20;PSV;Belgium;
-Pablo Barrios;20;Atletico Madrid;Spain;
-Martin Baturina;20;Dinamo Zagreb;Croatia;
-Cesare Casadei;20;Chelsea;Italy;
-Samuel Edozie;20;Southampton;England;
+Heriberto Jurado;18;Club Necaxa;Mexico;AML
+David Kalokoh;18;AFC Ajax;Netherlands;AMR, AML, AM, ST
+Kari Ayman;18;PSG;France;CM
+Will Lankshear;18;Tottenham;England;ST
+Luca Lipani;18;Sassuolo;Italy;DM, CM
+Rafael Luis;18;Benfica;Portugal;DM, CM
+Antoni Milambo;18;Feyenoord;Netherlands;CM, AM
+Gabriel Misehouy;18;AFC Ajax;Netherlands;CM, AMR, AML, AM, ST
+Alfonso Moreira;18;Sporting;Portugal;AMR, AML
+Nico Paz;18;Real Madrid;Argentina;AMR, AML
+Antonio Nusa;18;Club Brugge;Norway;AMR, AML
+Ashley Phillips;18;Tottenham;England;DC
+Sergey Pinyaev;18;FC Lokomotiv Moscow;Russia;AMR, AML
+Rodrigo Ribeiro;18;Sporting;Portugal;AMR, ST
+Guilherme Santos;18;Sporting;Portugal;CM, AM
+Jevon Simons;18;PSV;Netherlands;AMR, AM
+Ayanda Sishuba;18;RC Lens;Belgium;AM
+Jason van Duiven;18;PSV;Netherlands;ST
+Joao Veloso;18;Benfica;Portugal;CM, AM
+Arthur Vermeeren;18;Atletico Madrid;Belgium;DM ,CM
+Silvano Vos;18;AFC Ajax;Netherlands;DC, DM, CM
+Ilias Akhomach;19;Villareal;Spain;CM, AM
+Andrey Santos;19;Chelsea;Brasil;DM, CM
+Samson Baidoo;19;RB Salzburg;Austria;DC, DM
+Berdaldo;19;PSG;Brasil;DC, DM
+Carlos Borges;19;AFC Ajax;Portugal;AMR, AML
+Sammy Braybrooke;19;Leicester City;England;DM, CM
+Rayan Cherki;19;Olympique Lyon;France;AMR, AML, AM, ST
+Carney Chukwuemeka;19;Chelsea;England;CM, AM
+Zeno Debast;19;Anderlecht;Belgium;DC
+Diego Callai;19;Sporting;Brasil;GK
+Callum Doyle;19;Manchester City;England;DL, DC
+Mohamed El Arouch;19;Olimpique Lyon;France;DM, CM, AM
+Bilal El Khannouss;19;RC Genk;Morocco;CM, AM
+Abdul Fatawu;19;Sporting;Ghana;AMR, AML, AM
+Giacomo Faticanti;19;Lecce;Italy;DM, CM
+Hugo Felix;19;Benfica;Portugal;AMR, AML, AM
+Mateus Fernandes;19;Sporting;Portugal;CM, AM
+Giovani;19;As-Sadd;Brasil;AMR, AML
+Lucas Gourna-Douath;19;RB Salzburg;France;DM, CM
+Julen Jon Guerrero;19;Deportivo Alaves;Spain;CM, AM
+Habib Diarra;19;Strasbourg;France;CM
+Luis Hasa;19;Juvenlose;Italy;CM, AML, AM
+Samuel Iling;19;Juvenlose;England;DL, AML
+Milos Kerkez;19;Bournemouth;Hungary;DL
+Hugo Larsson;19;Eintracht Frankfurt;Sweden;DM, CM
+Franca Matheus;19;Crystal Palace;Brasil;CM, AML, AM
+Yankuba Minteh;19;Newcastle;Gambia;AMR, AML
+Alberto Moleiro;19;Las Palmas;Spain;CM, AML, AM
+Christhian Mosquera;19;Valencia;Spain;DR, DC
+Ernest Nuamah;19;Molenbeek;Ghana;AMR, AML
+Rome-Jayden Owusu-Oduro;19;AZ Alkmaar;Netherlands;GK
+Estanis Pedrola;19;FC Barcelona;Spain;AMR, AML, ST
+Ernest Poku;19;AZ Alkmaar;Netherlands;AMR, AML, ST
+Matteo Prati;19;Cagliari;Italy;DM, CM
+Robert Renan;19;FC Zenit;Brasil;DC
+Alvaro Rodriguez;19;Real Madrid;Uruguay;AML, ST
+Jude Soonsup-Bell;19;Tottenham;England;ST
+Williot Swedberg;19;Celta Vigo;Sweden;CM, AMR, AML, AM, ST
+Lesley Ugochukwu;19;Chelsea ;France;DM ,CM
+Jonas Urbig;19;1. FC Koln;Niemcy;GK
+Samuele Vignato;19;Monza;Italy;AMR, AML, AM, ST
+Yehor Yarmoliuk;19;Brentford;Ukraine;CM, AM
+Oscar Zambrano;19;Liga Deportiva Universitaria;Ecuador;DM, CM
+Elliot Anderson;20;Newcastle;Scotland;CM, AMR, AML, AM
+Johan Bakayoko;20;PSV;Belgium;AMR, AML
+Pablo Barrios;20;Atletico Madrid;Spain;DM ,CM
+Martin Baturina;20;Dinamo Zagreb;Croatia;CM, AM
+Cesare Casadei;20;Chelsea;Italy;CM ,AM
+Samuel Edozie;20;Southampton;England;AMR ,AML
 Fermin;20;FC Barcelona;Spain;CM, AM, AML, AMR
 Malo Gusto;20;Chelsea;France;DR
-Maurits Kjaergaad;20;RB Salzburg;Denmark;
-Marquinhos;20;Arsenal;Brasil;
-James McAtee;20;Manchester City;England;
-Patryck Lanza;20;Sao Paulo FC;Brasil;
-Maximo Perrone;20;Manchester City;Argentina;
-Chadi Riad;20;FC Barcelona;Morocco;
-Vasco Sousa;20;Porto;Portugal;
-Heorhii Sudakov;20;Shakhtar Donetsk;Ukraine;
+Maurits Kjaergaad;20;RB Salzburg;Denmark;CM, AM, ST
+Marquinhos;20;Arsenal;Brasil;AMR, ST
+James McAtee;20;Manchester City;England;CM, AMR, AM
+Patryck Lanza;20;Sao Paulo FC;Brasil;DL
+Maximo Perrone;20;Manchester City;Argentina;DM ,CM
+Chadi Riad;20;FC Barcelona;Morocco;DC
+Vasco Sousa;20;Porto;Portugal;CM, AM
+Heorhii Sudakov;20;Shakhtar Donetsk;Ukraine;CM, AML, AM
 Pablo Torre;20;FC Barcelona;Spain;CM, AM, AML
-Arsen Zakharyan;20;Real Sociedad;Russia;
-Faustino Anjorin;21;Chelsea;England;
-Lucas Canizares;21;Real Madrid;Spain;
-Sivert Mannsverk;21;AFC Ajax;Norway;
-Tanguy Nianzou;21;Sevilla;France;
-Talles Magno;21;New York City FC;Brasil;
-Kenneth Taylor;21;AFC Ajax;Netherlands;
-Alan Velasco;21;FC Dallas;Argentina;
+Arsen Zakharyan;20;Real Sociedad;Russia;CM, AMR, AML, AM
+Faustino Anjorin;21;Chelsea;England;CM, AM
+Lucas Canizares;21;Real Madrid;Spain;GK
+Sivert Mannsverk;21;AFC Ajax;Norway;DM, CM
+Tanguy Nianzou;21;Sevilla;France;DC, DM
+Talles Magno;21;New York City FC;Brasil;AMR, AML, AM, ST
+Kenneth Taylor;21;AFC Ajax;Netherlands;DM, CM, AM
+Alan Velasco;21;FC Dallas;Argentina;AMR, AML, AM, ST
