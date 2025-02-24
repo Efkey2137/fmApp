@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { House, Diff, Star, ChartLine, Lightbulb, SearchCheck  } from 'lucide-react';
+
 
 interface MenuProps {
   menuOpen: boolean;
@@ -12,12 +14,12 @@ const Menu: React.FC<MenuProps> = ({ menuOpen, setMenuOpen }) => {
   return (
     <nav className={`menu ${menuOpen ? "active" : ""}`}>
       <ul>
-        <li><Link to="/" className="App-link" onClick={handleCloseMenu}>Home</Link></li>
-        <li><Link to="/compare" className="App-link" onClick={handleCloseMenu}>Compare</Link></li>
-        <li><Link to="/rate-player" className="App-link" onClick={handleCloseMenu}>Rate Player</Link></li>
-        <li><Link to="/track-progress" className="App-link" onClick={handleCloseMenu}>Track Progress</Link></li>
-        <li><Link to="/wonderkids" className="App-link" onClick={handleCloseMenu}>Wonderkids</Link></li>
-        <li><Link to="/save-ideas" className="App-link" onClick={handleCloseMenu}>Save Ideas</Link></li>
+        <li><Link to="/" className="App-link" onClick={handleCloseMenu}><House/>Home</Link></li>
+        <li><Link to="/compare" className="App-link" onClick={handleCloseMenu}><Diff/>Compare</Link></li>
+        <li><Link to="/rate-player" className="App-link" onClick={handleCloseMenu}><SearchCheck />Rate Player</Link></li>
+        <li><Link to="/track-progress" className="App-link" onClick={handleCloseMenu}><ChartLine/>Track Progress</Link></li>
+        <li><Link to="/wonderkids" className="App-link" onClick={handleCloseMenu}><Star/>Wonderkids</Link></li>
+        <li><Link to="/save-ideas" className="App-link" onClick={handleCloseMenu}><Lightbulb/>Save Ideas</Link></li>
       </ul>
     </nav>
   );
