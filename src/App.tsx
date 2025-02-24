@@ -8,6 +8,7 @@ import TrackProgress from "./pages/TrackProgress";
 import Compare from "./pages/Compare";
 import Wonderkids from "./pages/Wonderkids";
 import SaveIdeas from "./pages/SaveIdeas";
+import Home from "./pages/Home"
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -21,7 +22,7 @@ function App() {
         <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <main>
           <Routes>
-            <Route path="/" element={<h1>Welcome to AskMngr</h1>} />
+            <Route path="/" element={<Home/>} />
             <Route path="/rate-player" element={<RatePlayer />} />
             <Route path="/compare" element={<Compare />} />
             <Route path="/track-progress" element={<TrackProgress />} />
