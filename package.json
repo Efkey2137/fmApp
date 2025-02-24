@@ -12,7 +12,7 @@
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vercel/analytics": "^1.5.0",
-    "lucide-react": "^0.324.0",
+    "lucide-react": "^0.475.0",
     "papaparse": "^5.5.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
