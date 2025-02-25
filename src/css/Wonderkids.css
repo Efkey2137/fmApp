@@ -65,14 +65,13 @@
     font-size: 1.5rem;
     margin: 0 0 1dvh 0;
 }
-
-.wonderkids-table th {
-    vertical-align: middle;
+.wonderkids-table th:hover{
+    background-color: #9058ff;
+    color: #eeeeee;
     padding: 1dvh;
-}
-
-.wonderkids-table th svg {
-    vertical-align: middle;
+    text-align: left;
+    min-width: 61px;
+    cursor: pointer;
 }
 
 .wonderkids-table .sortable-header {
