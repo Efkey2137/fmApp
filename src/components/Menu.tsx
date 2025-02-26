@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../css/Menu.css";
-import { House, Diff, Star, ChartLine, Lightbulb, SearchCheck  } from 'lucide-react';
+import { LayoutDashboard, Diff, Star, ChartLine, Lightbulb, SearchCheck  } from 'lucide-react';
 import logo from "../assets/logo.png";
 
 
@@ -20,7 +20,7 @@ const Menu: React.FC<MenuProps> = ({ menuOpen, setMenuOpen }) => {
         AskMngr
       </div>
       <ul>
-        <li><Link to="/" className="App-link" onClick={handleCloseMenu}><House/>Home</Link></li>
+        <li><Link to="/" className="App-link" onClick={handleCloseMenu}><LayoutDashboard/>Dashboard</Link></li>
         <li><Link to="/compare" className="App-link" onClick={handleCloseMenu}><Diff/>Compare</Link></li>
         <li><Link to="/rate-player" className="App-link" onClick={handleCloseMenu}><SearchCheck />Rate Player</Link></li>
         <li><Link to="/track-progress" className="App-link" onClick={handleCloseMenu}><ChartLine/>Track Progress</Link></li>

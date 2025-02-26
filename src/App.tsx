@@ -8,7 +8,8 @@ import TrackProgress from "./pages/TrackProgress";
 import Compare from "./pages/Compare";
 import Wonderkids from "./pages/Wonderkids";
 import SaveIdeas from "./pages/SaveIdeas";
-import Home from "./pages/Home"
+import Home from "./pages/Dashboard"
+
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
