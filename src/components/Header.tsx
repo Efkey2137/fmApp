@@ -9,7 +9,7 @@ const Header: React.FC<{ menuOpen: boolean; setMenuOpen: (open: boolean) => void
     <header className="App-header">
       <div className="App-logo">
         <img src={logo} alt="logo" className="logo-img" />
-      AskMngr
+        AskMngr
       </div>
       <button className={`menu-toggle ${menuOpen ? "open" : ""}`} onClick={() => setMenuOpen(!menuOpen)}>
         <div className="bar top"></div>
@@ -19,5 +19,6 @@ const Header: React.FC<{ menuOpen: boolean; setMenuOpen: (open: boolean) => void
     </header>
   );
 };
+
 
 export default Header;

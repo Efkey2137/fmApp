@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #222031;
+    background-color: #222;
     height: 10dvh;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 0 2dvw;
@@ -12,6 +12,7 @@
     top: 0;
     z-index: 10;
 }
+
 
 .App-logo {
     font-size: 2rem;
@@ -32,9 +33,29 @@
     color: #9a66ff;
     cursor: pointer;
 }
+/* MENU SETTINGS */
+.menu {
+    background-color: #1b1b1b;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 18dvw;
+    height: 100vh;
+    /* padding-top: 12dvh; Usunięto margines, bo Header jest teraz w środku */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+@media (min-width: 769px) {
+    .App-header {
+        display: none; /* Ukryj nagłówek w wersji desktopowej */
+    }
+}
 
 /* MOBILE VERSION */
-@media (max-width: 768px) {
+@media (max-width: 768px){
     .menu-toggle {
         display: flex;
         flex-direction: column;
@@ -50,15 +71,15 @@
     }
 
     .menu-toggle .bar {
-        width: 8dvw;
-        height: 0.5dvh;
+        width: 40px;
+        height: 4px;
         background-color: #9a66ff;
-        margin: 0.5dvh 0;
+        margin: 4px 0;
         transition: 0.4s;
     }
 
     .menu-toggle.open .top {
-        transform: translateY(1.5dvh) rotate(45deg);
+        transform: translateY(12px) rotate(45deg);
     }
 
     .menu-toggle.open .middle {
@@ -66,6 +87,6 @@
     }
 
     .menu-toggle.open .bottom {
-        transform: translateY(-1.5dvh) rotate(-45deg);
+        transform: translateY(-12px) rotate(-45deg);
     }
 }

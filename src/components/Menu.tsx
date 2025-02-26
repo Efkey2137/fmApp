@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../css/Menu.css";
 import { House, Diff, Star, ChartLine, Lightbulb, SearchCheck  } from 'lucide-react';
+import logo from "../assets/logo.png";
 
 
 interface MenuProps {
@@ -14,6 +15,10 @@ const Menu: React.FC<MenuProps> = ({ menuOpen, setMenuOpen }) => {
 
   return (
     <nav className={`menu ${menuOpen ? "active" : ""}`}>
+      <div className="App-logo-menu">
+        <img src={logo} alt="logo" className="logo-img" />
+        AskMngr
+      </div>
       <ul>
         <li><Link to="/" className="App-link" onClick={handleCloseMenu}><House/>Home</Link></li>
         <li><Link to="/compare" className="App-link" onClick={handleCloseMenu}><Diff/>Compare</Link></li>
@@ -25,5 +30,6 @@ const Menu: React.FC<MenuProps> = ({ menuOpen, setMenuOpen }) => {
     </nav>
   );
 };
+
 
 export default Menu;
