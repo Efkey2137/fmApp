@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import Tesseract from "tesseract.js";
+import vision from "@google-cloud/vision";
+import "../App.css"
+import "../css/RatePlayer.css";
 
 const RatePlayer = () => {
   const [attributes, setAttributes] = useState<{ name: string; value: number }[]>([]);
@@ -10,7 +13,7 @@ const RatePlayer = () => {
     setLoading(true);
     const file = acceptedFiles[0];
 
-    Tesseract.recognize(file, "eng")
+    Tesseract.recognize(file, "pol")
       .then(({ data }) => {
         const text = data.text;
         console.log("OCR Output:", text);
@@ -36,8 +39,8 @@ const RatePlayer = () => {
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (
-    <div className="p-4 border-dashed border-2 rounded-lg">
-      <div {...getRootProps()} className="cursor-pointer p-4 bg-gray-100">
+    <div className="dropzone-container">
+      <div {...getRootProps()} className="dropzone-area">
         <input {...getInputProps()} />
         <p>Przeciągnij i upuść screenshota z FM, lub kliknij, aby go wybrać.</p>
       </div>
@@ -45,12 +48,12 @@ const RatePlayer = () => {
       {loading && <p>⏳ Przetwarzanie obrazu...</p>}
 
       {attributes.length > 0 && (
-        <div className="mt-4">
-          <h2 className="text-lg font-bold">Atrybuty:</h2>
+        <div className="attributes-container">
+          <h2 className="attributes-title">Atrybuty:</h2>
           <ul>
             {attributes.map((attr, index) => (
-              <li key={index} className="border-b py-1">
-                <span className="font-semibold">{attr.name}</span>: {attr.value}
+              <li key={index} className="attribute-item">
+                <span className="attribute-name">{attr.name}</span>: {attr.value}
               </li>
             ))}
           </ul>

@@ -1,0 +1,60 @@
+/* Main container styles */
+.dropzone-container {
+    padding: 1rem;
+}
+
+.dropzone-area {
+    border: 2px dashed #9a66ff;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    background-color: #1b1b1b;
+    color: #e0e0e0;
+    padding: 2rem;
+}
+
+/* Attributes container styles */
+.attributes-container {
+    margin-top: 1rem;
+}
+
+.attributes-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #e0e0e0;
+    border-bottom: 1px solid #393046;
+    padding-bottom: 0.25rem;
+}
+
+.attribute-item {
+    margin: 0.5rem 0;
+    color: #e0e0e0;
+}
+
+.attribute-name {
+    font-weight: 600;
+    color: #e0e0e0;
+}
+
+/* Loading state */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+p:has(⏳) {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    color: #9a66ff;
+}
+
+/* Hover effects */
+.dropzone-area:hover {
+    background-color: #393046;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* List styling */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
