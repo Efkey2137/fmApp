@@ -1,0 +1,46 @@
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card-link {
+    text-decoration: none;
+    color: white;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card-link:hover {
+    transform: translateY(-5px);
+}
+
+.card-link > div {
+    background-color: #1b1b1b;
+    border: 1px solid #393046;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+    height: 100%;
+    min-height: 200px;
+}
+
+.card-link > div:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    border-color: #9a66ff;
+}
+
+.card-link > div:hover h2, .card-link > div:hover  {
+    color: #9a66ff;
+}
+
+.card-link h2 {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    transition: color 0.2s ease-in-out;
+}
