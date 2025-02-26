@@ -6,10 +6,10 @@ import "../css/Dashboard.css";
 
 const cards = [
   { id: 1, title: "Compare", icon: Diff, link: "/compare" },
-  { id: 2, title: "Rate Player", icon: SearchCheck, link: "/rate" },
+  { id: 2, title: "Rate Player", icon: SearchCheck, link: "/rate-player" },
   { id: 3, title: "Track Progress", icon: ChartLine, link: "/progress" },
   { id: 4, title: "Wonderkids", icon: Star, link: "/wonderkids" },
-  { id: 5, title: "Save Ideas", icon: Lightbulb, link: "/ideas" },
+  { id: 5, title: "Save Ideas", icon: Lightbulb, link: "/save-ideas" },
 ];
 
 
