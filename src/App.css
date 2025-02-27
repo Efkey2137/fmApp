@@ -20,18 +20,17 @@ body {
 .App {
   display: flex;
   flex-direction: row;
-  height: calc(100vh - 10dvh); /* Usunięto stałą wysokość */
+  height: calc(100vh - 10dvh);
   user-select: none;
 }
 
 /* MAIN CONTENT */
 main {
-  margin-left: 300px; /* Same width as the menu */
-  padding-top: 5dvh; 
+  margin-left: 300px;
   padding: 2dvh;
   overflow-y: auto;
-  width: calc(100% - 300px); /* Take up remaining space */
-  height: 100dvh; /* Zajmuje pełną dostępną wysokość */
+  width: calc(100% - 300px);
+  height: 100dvh;
 }
 
 /* Custom scrollbar */
@@ -51,8 +50,12 @@ main::-webkit-scrollbar-thumb {
 main::-webkit-scrollbar-thumb:hover {
   background: #7a50cc;
 }
+
 @media (max-width: 768px) {
-  main{
+  main {
+    margin-left: 0;
+    width: 100%;
+    height: calc(100vh - 10dvh);
     margin-top: 10dvh;
   }
 }

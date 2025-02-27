@@ -1,24 +1,27 @@
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
-import Tesseract from "tesseract.js";
-import vision from "@google-cloud/vision";
 import "../App.css"
 import "../css/RatePlayer.css";
 
 const RatePlayer = () => {
   const [attributes, setAttributes] = useState<{ name: string; value: number }[]>([]);
+  const [rawText, setRawText] = useState<string>("");
   const [loading, setLoading] = useState(false);
 
   const onDrop = (acceptedFiles: File[]) => {
     setLoading(true);
     const file = acceptedFiles[0];
+    
+    const reader = new FileReader();
 
-    Tesseract.recognize(file, "pol")
-      .then(({ data }) => {
-        const text = data.text;
-        console.log("OCR Output:", text);
-
-        // Regex dla atrybutów i wartości 1-20
+    reader.onload = (event) => {
+      if (event.target?.result) {
+        const text = event.target.result as string;
+        
+        // Set the raw text content
+        setRawText(text);
+        
+        // Keep the existing attribute extraction logic
         const regex = /([A-Za-z\s]+)\s(\d{1,2})/g;
         const extractedAttributes: { name: string; value: number }[] = [];
         
@@ -32,20 +35,46 @@ const RatePlayer = () => {
         }
 
         setAttributes(extractedAttributes);
-      })
-      .finally(() => setLoading(false));
+        setLoading(false);
+      }
+    };
+
+    reader.onerror = (error) => {
+      console.error('Error reading file:', error);
+      setLoading(false);
+    };
+
+    reader.readAsText(file);
   };
 
-  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps } = useDropzone({ 
+    onDrop,
+    accept: {
+      'text/rtf': ['.rtf'],
+      'text/plain': ['.txt'],
+      'application/rtf': ['.rtf']
+    },
+    multiple: false
+  });
 
   return (
     <div className="dropzone-container">
       <div {...getRootProps()} className="dropzone-area">
         <input {...getInputProps()} />
-        <p>Przeciągnij i upuść screenshota z FM, lub kliknij, aby go wybrać.</p>
+        <p>Przeciągnij i upuść plik RTF z FM, lub kliknij, aby go wybrać.</p>
       </div>
 
-      {loading && <p>⏳ Przetwarzanie obrazu...</p>}
+      {loading && <p>⏳ Przetwarzanie pliku...</p>}
+
+      {/* Display raw text content */}
+      {rawText && (
+        <div className="raw-text-container">
+          <h2>Raw Text Content:</h2>
+          <pre style={{ whiteSpace: 'pre-wrap', maxWidth: '100%', overflow: 'auto' }}>
+            {rawText}
+          </pre>
+        </div>
+      )}
 
       {attributes.length > 0 && (
         <div className="attributes-container">
