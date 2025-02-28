@@ -1,7 +1,7 @@
 export class PlayerRatingEngine {
     private readonly META_ATTRIBUTES = [
         "Drybling", "Koncentracja", "Przewidywanie", "Przyspieszenie",
-        "Rownowaga", "Sila", "Skocznosc", "Szybkosc", "Zwinnosc"
+        "Równowaga", "Siła", "Skoczność", "Szybkość", "Zwinność"
     ];
 
     private readonly META_MULTIPLIER = 5;
