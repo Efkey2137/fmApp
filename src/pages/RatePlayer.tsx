@@ -1,40 +1,85 @@
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
-import "../App.css"
+import PlayerRatingEngine from "../utils/PlayerRatingEngine";
+import "../App.css";
 import "../css/RatePlayer.css";
 
 const RatePlayer = () => {
-  const [attributes, setAttributes] = useState<{ name: string; value: number }[]>([]);
-  const [rawText, setRawText] = useState<string>("");
+  // Define static attributes
+  const staticAttributes = [
+    // Technical Attributes
+    { category: "Technical", name: "Długie wrzuty", value: 0 },
+    { category: "Technical", name: "Dośrodkowania", value: 0 },
+    { category: "Technical", name: "Drybling", value: 0 },
+    { category: "Technical", name: "Gra głową", value: 0 },
+    { category: "Technical", name: "Krycie", value: 0 },
+    { category: "Technical", name: "Odbiór piłki", value: 0 },
+    { category: "Technical", name: "Podania", value: 0 },
+    { category: "Technical", name: "Przyjęcie piłki", value: 0 },
+    { category: "Technical", name: "Rzuty karne", value: 0 },
+    { category: "Technical", name: "Rzuty rożne", value: 0 },
+    { category: "Technical", name: "Rzuty wolne", value: 0 },
+    { category: "Technical", name: "Strzały z dystansu", value: 0 },
+    { category: "Technical", name: "Technika", value: 0 },
+    { category: "Technical", name: "Wykańczanie akcji", value: 0 },
+
+    // Psychical Attributes 
+    { category: "Psychical", name: "Agresja", value: 0 },
+    { category: "Psychical", name: "Błyskotliwość", value: 0 },
+    { category: "Psychical", name: "Decyzje", value: 0 },
+    { category: "Psychical", name: "Determinacja", value: 0 },
+    { category: "Psychical", name: "Gra bez piłki", value: 0 },
+    { category: "Psychical", name: "Koncentracja", value: 0 },
+    { category: "Psychical", name: "Opanowanie", value: 0 },
+    { category: "Psychical", name: "Pracowitość", value: 0 },
+    { category: "Psychical", name: "Przegląd sytuacji", value: 0 },
+    { category: "Psychical", name: "Przewidywanie", value: 0 },
+    { category: "Psychical", name: "Przywództwo", value: 0 },
+    { category: "Psychical", name: "Ustawianie się", value: 0 },
+    { category: "Psychical", name: "Waleczność", value: 0 },
+    { category: "Psychical", name: "Współpraca", value: 0 },
+
+    // Physical Attributes
+    { category: "Physical", name: "Przyspieszenie", value: 0 },
+    { category: "Physical", name: "Równowaga", value: 0 },
+    { category: "Physical", name: "Siła", value: 0 },
+    { category: "Physical", name: "Skoczność", value: 0 },
+    { category: "Physical", name: "Sprawność", value: 0 },
+    { category: "Physical", name: "Szybkość", value: 0 },
+    { category: "Physical", name: "Wytrzymałość", value: 0 },
+    { category: "Physical", name: "Zwinność", value: 0 },
+  ];
+
+  const [attributes, setAttributes] = useState(staticAttributes);
   const [loading, setLoading] = useState(false);
+  const [playerRating, setPlayerRating] = useState<number | null>(null);
 
   const onDrop = (acceptedFiles: File[]) => {
     setLoading(true);
     const file = acceptedFiles[0];
-    
+
     const reader = new FileReader();
 
     reader.onload = (event) => {
       if (event.target?.result) {
         const text = event.target.result as string;
-        
-        // Set the raw text content
-        setRawText(text);
-        
-        // Keep the existing attribute extraction logic
-        const regex = /([A-Za-z\s]+)\s(\d{1,2})/g;
-        const extractedAttributes: { name: string; value: number }[] = [];
-        
+
+        const regex = /\|\s([\w\sĄąĆćĘęŁłŃńÓóŚśŹźŻż-]+)\s*\|\s*(\d{1,2})\s*\|/g;
         let match;
+        const extractedValues: number[] = [];
+
         while ((match = regex.exec(text)) !== null) {
-          const name = match[1].trim();
           const value = parseInt(match[2], 10);
-          if (value >= 1 && value <= 20) {
-            extractedAttributes.push({ name, value });
-          }
+          extractedValues.push(value);
         }
 
-        setAttributes(extractedAttributes);
+        // Update static attributes with values from the file
+        const updatedAttributes = staticAttributes.map((attr, index) => ({
+          ...attr,
+          value: extractedValues[index] || attr.value // Assign by index, keep default if not found
+        }));
+
+        setAttributes(updatedAttributes);
         setLoading(false);
       }
     };
@@ -47,7 +92,22 @@ const RatePlayer = () => {
     reader.readAsText(file);
   };
 
-  const { getRootProps, getInputProps } = useDropzone({ 
+  const handleValueChange = (name: string, newValue: number) => {
+    const updatedAttributes = [...attributes];
+    const index = updatedAttributes.findIndex(attr => attr.name === name);
+    if (index !== -1) {
+      updatedAttributes[index].value = newValue;
+      setAttributes(updatedAttributes);
+    }
+  };
+
+  const calculatePlayerRating = () => {
+    const ratingEngine = new PlayerRatingEngine();
+    const rating = ratingEngine.calculateRating(attributes);
+    setPlayerRating(rating);
+  };
+
+  const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     accept: {
       'text/rtf': ['.rtf'],
@@ -63,29 +123,43 @@ const RatePlayer = () => {
         <input {...getInputProps()} />
         <p>Przeciągnij i upuść plik RTF z FM, lub kliknij, aby go wybrać.</p>
       </div>
-
       {loading && <p>⏳ Przetwarzanie pliku...</p>}
 
-      {/* Display raw text content */}
-      {rawText && (
-        <div className="raw-text-container">
-          <h2>Raw Text Content:</h2>
-          <pre style={{ whiteSpace: 'pre-wrap', maxWidth: '100%', overflow: 'auto' }}>
-            {rawText}
-          </pre>
+      {playerRating !== null && (
+        <div className="rating-display">
+          <h2>Rating gracza: {playerRating}</h2>
         </div>
       )}
 
       {attributes.length > 0 && (
         <div className="attributes-container">
-          <h2 className="attributes-title">Atrybuty:</h2>
-          <ul>
-            {attributes.map((attr, index) => (
-              <li key={index} className="attribute-item">
-                <span className="attribute-name">{attr.name}</span>: {attr.value}
-              </li>
-            ))}
-          </ul>
+          {['Technical', 'Psychical', 'Physical'].map(category => (
+            <div key={category} className="attribute-category">
+              <h3 className="category-title">{category}</h3>
+              <ul>
+                {attributes
+                  .filter(attr => attr.category === category)
+                  .map((attr) => (
+                    <li key={attr.name}>
+                      <label>{attr.name}</label>
+                      <input 
+                        type="number" 
+                        value={attr.value} 
+                        onChange={(e) => handleValueChange(attr.name, parseInt(e.target.value, 10))} 
+                      />
+                    </li>
+                  ))}
+              </ul>
+              {category === 'Physical' && ( 
+                <button
+                  className="calculate-button"
+                  onClick={calculatePlayerRating}
+                >
+                  Oblicz rating
+                </button>
+              )}
+            </div>
+          ))}
         </div>
       )}
     </div>
@@ -93,3 +167,4 @@ const RatePlayer = () => {
 };
 
 export default RatePlayer;
+
