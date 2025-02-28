@@ -121,13 +121,13 @@ const RatePlayer = () => {
     <div className="dropzone-container">
       <div {...getRootProps()} className="dropzone-area">
         <input {...getInputProps()} />
-        <p>Przeciągnij i upuść plik RTF z FM, lub kliknij, aby go wybrać.</p>
+        <p>Drag and drop the RTF file from FM, or click to select it.</p>
       </div>
       {loading && <p>⏳ Przetwarzanie pliku...</p>}
 
       {playerRating !== null && (
         <div className="rating-display">
-          <h2>Rating gracza: {playerRating}</h2>
+          <h2>Player rating: {playerRating}</h2>
         </div>
       )}
 
