@@ -17,6 +17,7 @@
 
 /* Dropzone styles */
 .dropzone-area {
+    font-size: 1.3rem;
     border: 2px dashed var(--primary-color);
     border-radius: 8px;
     padding: 2.5rem;
@@ -66,7 +67,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.75rem 0;
+    padding: 0.25rem 0;
     border-bottom: 1px solid var(--border-color);
 }
 
