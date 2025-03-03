@@ -9,6 +9,8 @@ import Compare from "./pages/Compare";
 import Wonderkids from "./pages/Wonderkids";
 import SaveIdeas from "./pages/SaveIdeas";
 import Home from "./pages/Dashboard"
+import FAQ from "./pages/Faq"
+import LogIn from "./pages/LogIn"
 
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
             <Route path="/track-progress" element={<TrackProgress />} />
             <Route path="/save-ideas" element={<SaveIdeas />} />
             <Route path="/wonderkids" element={<Wonderkids />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/log-in" element={<LogIn />} />
           </Routes>
         </main>
       </div>

@@ -1,67 +1,38 @@
 import { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import PlayerRatingEngine from "../utils/PlayerRatingEngine";
+import { staticAttributes } from "../data/StaticAttributes";  // Zaimportowanie staticAttributes
 import "../App.css";
 import "../css/RatePlayer.css";
 
 const RatePlayer = () => {
-  // Define static attributes
-  const staticAttributes = [
-    // Goalkeeping Attributes
-    { category: "Goalkeeping", name: "Handling", value: 0 },
-    { category: "Goalkeeping", name: "Eccentricity", value: 0 },
-    { category: "Goalkeeping", name: "Command of Area", value: 0 },
-    { category: "Goalkeeping", name: "One on Ones", value: 0 },
-    { category: "Goalkeeping", name: "Communication", value: 0 },
-    { category: "Goalkeeping", name: "Punching (Tendency)", value: 0 },
-    { category: "Goalkeeping", name: "Passing", value: 0 },
-    { category: "Goalkeeping", name: "First Touch", value: 0 },
-    { category: "Goalkeeping", name: "Reflexes", value: 0 },
-    { category: "Goalkeeping", name: "Rushing Out (Tendency)", value: 0 },
-    { category: "Goalkeeping", name: "Kicking", value: 0 },
-    { category: "Goalkeeping", name: "Throwing", value: 0 },
-    { category: "Goalkeeping", name: "Aerial Reach", value: 0 },
-    // Technical Attributes
-    { category: "Technical", name: "Long Throws", value: 0 },
-    { category: "Technical", name: "Crossing", value: 0 },
-    { category: "Technical", name: "Dribbling", value: 0 },
-    { category: "Technical", name: "Heading", value: 0 },
-    { category: "Technical", name: "Marking", value: 0 },
-    { category: "Technical", name: "Tackling", value: 0 },
-    { category: "Technical", name: "Passing", value: 0 },
-    { category: "Technical", name: "First Touch", value: 0 },
-    { category: "Technical", name: "Penalty Taking", value: 0 },
-    { category: "Technical", name: "Corners", value: 0 },
-    { category: "Technical", name: "Free Kick Tacking", value: 0 },
-    { category: "Technical", name: "Long Shots", value: 0 },
-    { category: "Technical", name: "Technique", value: 0 },
-    { category: "Technical", name: "Finishing", value: 0 },
-    // Psychical Attributes 
-    { category: "Psychical", name: "Aggression", value: 0 },
-    { category: "Psychical", name: "Flair", value: 0 },
-    { category: "Psychical", name: "Decisions", value: 0 },
-    { category: "Psychical", name: "Determination", value: 0 },
-    { category: "Psychical", name: "Off The Ball", value: 0 },
-    { category: "Psychical", name: "Concentration", value: 0 },
-    { category: "Psychical", name: "Composure", value: 0 },
-    { category: "Psychical", name: "Work Rate", value: 0 },
-    { category: "Psychical", name: "Vision", value: 0 },
-    { category: "Psychical", name: "Anticipation", value: 0 },
-    { category: "Psychical", name: "Leadership", value: 0 },
-    { category: "Psychical", name: "Positioning", value: 0 },
-    { category: "Psychical", name: "Bravery", value: 0 },
-    { category: "Psychical", name: "Teamwork", value: 0 },
-    // Physical Attributes
-    { category: "Physical", name: "Acceleration", value: 0 },
-    { category: "Physical", name: "Balance", value: 0 },
-    { category: "Physical", name: "Strength", value: 0 },
-    { category: "Physical", name: "Jumping Reach", value: 0 },
-    { category: "Physical", name: "Natural Fitness", value: 0 },
-    { category: "Physical", name: "Pace", value: 0 },
-    { category: "Physical", name: "Stamina", value: 0 },
-    { category: "Physical", name: "Agility", value: 0 },
+  const GK_ATTRIBUTES = [
+    "Reflexes", "One on Ones", "Jumping Reach", "Aerial Reach", "Positioning", "Decisions"
+  ];
+  const CB_ATTRIBUTES = [
+    "Jumping Reach", "Tackling", "Composure", "Concentration", "Strength"
+  ];
+  const FB_ATTRIBUTES = [
+    "Work Rate", "Stamina", "Positioning", "Crossing", "Technique", "Marking", "Determination"
+  ];
+  const DM_ATTRIBUTES = [
+    "First Touch", "Teamwork", "Composure", "Positioning", "Passing", "Tackling"
+  ];
+  const CM_ATTRIBUTES = [
+    "Work Rate", "Stamina", "Passing", "Decisions"
+  ];
+  const AM_ATTRIBUTES = [
+    "Vision", "Flair", "First Touch", "Off The Ball", "Technique"
+  ];
+  const WING_ATTRIBUTES = [
+    "Agility", "Dribbling", "Balance", "Flair", "Technique"
+  ];
+  const ST_ATTRIBUTES = [
+    "Off The Ball", "Composure", "Determination", "First Touch", "Finishing"
   ];
 
+  // Define static attributes
+  
   const Positions = [
     { name: "Goalkeeper", sc: "GK" },
     { name: "Centre Back", sc: "CB" },
@@ -73,14 +44,30 @@ const RatePlayer = () => {
     { name: "Striker", sc: "ST" }
   ];
 
+  
   const [attributes, setAttributes] = useState(staticAttributes);
   const [loading, setLoading] = useState(false);
   const [playerRating, setPlayerRating] = useState<number | null>(null);
   const [selectedPosition, setSelectedPosition] = useState<string>('');
+  const [inputValues, setInputValues] = useState<{[key: string]: string}>({});
+  const [showPositions, setShowPositions] = useState(false);
+  const [inputPosition, setInputPosition] = useState('');
 
   useEffect(() => {
     calculatePlayerRating();
   }, [attributes, selectedPosition]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+        const target = event.target as HTMLElement;
+        if (!target.closest('.position-input-container')) {
+            setShowPositions(false);
+        }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+}, []);
 
   const onDrop = (acceptedFiles: File[]) => {
     setLoading(true);
@@ -153,12 +140,23 @@ const RatePlayer = () => {
     reader.readAsText(file);
   };
 
-  const handleValueChange = (name: string, newValue: number) => {
+  const handleValueChange = (name: string, value: string) => {
+    // Update the input value immediately
+    setInputValues(prev => ({...prev, [name]: value}));
+  };
+
+  const handleBlur = (name: string, value: string) => {
+    // Validate and update the actual attribute value when input loses focus
+    const numValue = parseInt(value, 10);
+    const validValue = Math.max(1, Math.min(20, numValue || 1));
+    
     const updatedAttributes = [...attributes];
     const index = updatedAttributes.findIndex(attr => attr.name === name);
     if (index !== -1) {
-      updatedAttributes[index].value = newValue;
+      updatedAttributes[index].value = validValue;
       setAttributes(updatedAttributes);
+      // Update input value to show the validated number
+      setInputValues(prev => ({...prev, [name]: validValue.toString()}));
     }
   };
 
@@ -178,103 +176,181 @@ const RatePlayer = () => {
     multiple: false
   });
 
+  const isPositionAttribute = (attributeName: string) => {
+    switch(selectedPosition) {
+      case 'GK': return GK_ATTRIBUTES.includes(attributeName);
+      case 'CB': return CB_ATTRIBUTES.includes(attributeName);
+      case 'FB': return FB_ATTRIBUTES.includes(attributeName);
+      case 'DM': return DM_ATTRIBUTES.includes(attributeName);
+      case 'CM': return CM_ATTRIBUTES.includes(attributeName);
+      case 'AM': return AM_ATTRIBUTES.includes(attributeName);
+      case 'WING': return WING_ATTRIBUTES.includes(attributeName);
+      case 'ST': return ST_ATTRIBUTES.includes(attributeName);
+      default: return false;
+    }
+  };
+
+  const handlePositionSelect = (position: { name: string, sc: string }) => {
+    setInputPosition(position.name);
+    setSelectedPosition(position.sc);
+    setShowPositions(false);
+
+    // Get previous position type (GK or field player)
+    const wasGoalkeeper = selectedPosition === 'GK';
+    const isGoalkeeper = position.sc === 'GK';
+
+    // Only reset attributes when switching between GK and field player or vice versa
+    if (wasGoalkeeper !== isGoalkeeper) {
+        // Reset all attributes to 0
+        const updatedAttributes = attributes.map(attr => ({
+            ...attr,
+            value: 0
+        }));
+        
+        setAttributes(updatedAttributes);
+        setInputValues({}); // Reset input values
+    }
+};
+
   return (
     <div className="dropzone-container">
-      <div {...getRootProps()} className="dropzone-area">
-      <input {...getInputProps()} />
-      <p>Drag and drop the RTF file from FM, or click to select it.</p>
-      </div>
-      {loading && <p>⏳ Przetwarzanie pliku...</p>}
+        <div className="controls-container">
+            <div {...getRootProps()} className="dropzone-area">
+                <input {...getInputProps()} />
+                <p>Drag and drop the RTF file from FM, or click to select it.</p>
+            </div>
 
-      {playerRating !== null && (
-      <div className="rating-display">
-        <h2>Player rating: {playerRating}</h2>
-      </div>
-      )}
+            {playerRating !== null && (
+                <div className={`rating-display ${
+                    playerRating >= 85 ? 'rating-border-gold' :
+                    playerRating >= 75 ? 'rating-border-green' :
+                    playerRating >= 65 ? 'rating-border-blue' :
+                    playerRating >= 55 ? 'rating-border-orange' :
+                    playerRating >= 45 ? 'rating-border-yellow' :
+                    playerRating >= 35 ? 'rating-border-red' :
+                    'rating-border-purple'
+                }`}>
+                    <h2 className={`${
+                        playerRating >= 85 ? 'rating-gold' :
+                        playerRating >= 75 ? 'rating-green' :
+                        playerRating >= 65 ? 'rating-blue' :
+                        playerRating >= 55 ? 'rating-orange' :
+                        playerRating >= 45 ? 'rating-yellow' :
+                        playerRating >= 35 ? 'rating-red' :
+                        'rating-purple'
+                    }`}>
+                        Player rating: {playerRating}
+                    </h2>
+                </div>
+            )}
 
-      <select
-      className="positions"
-      onChange={(e) => {
-        setSelectedPosition(e.target.value);
-        calculatePlayerRating();
-      }}
-      value={selectedPosition}
-      >
-      <option value="">Select position</option>
-      {Positions.map((position) => (
-        <option key={position.sc} value={position.sc}>
-        {position.name}
-        </option>
-      ))}
-      </select>
-
-      {attributes.length > 0 && (
-      <div className="attributes-container">
-        {selectedPosition === 'GK' ? (
-        <div className="attribute-category">
-          <h3 className="category-title">Goalkeeping</h3>
-          <ul>
-          {attributes
-            .filter(attr => attr.category === 'Goalkeeping')
-            .map((attr) => (
-            <li key={attr.name}>
-              <label>{attr.name}</label>
-              <input
-              type="number"
-              min="1"
-              max="20"
-              value={attr.value}
-              onChange={(e) => handleValueChange(attr.name, Math.max(1, Math.min(20, parseInt(e.target.value, 10) || 1)))}
-              />
-            </li>
-            ))}
-          </ul>
+            <div className="position-input-container">
+                <input
+                    className="position-input"
+                    type="text"
+                    placeholder="Select position"
+                    value={inputPosition}
+                    onChange={(e) => setInputPosition(e.target.value)}
+                    onFocus={() => setShowPositions(true)}
+                    readOnly
+                />
+                {showPositions && (
+                    <div className="positions-dropdown">
+                        {Positions.map((position) => (
+                            <div
+                                key={position.sc}
+                                className="position-option"
+                                onClick={() => handlePositionSelect(position)}
+                            >
+                                {position.name}
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
         </div>
-        ) : (
-        <div className="attribute-category">
-          <h3 className="category-title">Technical</h3>
-          <ul>
-          {attributes
-            .filter(attr => attr.category === 'Technical')
-            .map((attr) => (
-            <li key={attr.name}>
-              <label>{attr.name}</label>
-              <input
-              type="number"
-              min="1"
-              max="20"
-              value={attr.value}
-              onChange={(e) => handleValueChange(attr.name, Math.max(1, Math.min(20, parseInt(e.target.value, 10) || 1)))}
-              />
-            </li>
+
+        {loading && <p>⏳ Przetwarzanie pliku...</p>}
+
+        {attributes.length > 0 && (
+        <div className="attributes-container">
+            {selectedPosition === 'GK' ? (
+            <div className="attribute-category">
+            <h3 className="category-title">Goalkeeping</h3>
+            <ul>
+            {attributes
+                .filter(attr => attr.category === 'Goalkeeping')
+                .map((attr) => (
+                <li 
+                key={attr.name}
+                className={`attribute-item ${isPositionAttribute(attr.name) ? 'highlighted' : ''}`}
+                >
+                <label>{attr.name}</label>
+                <input
+                    type="number"
+                    min="1"
+                    max="20"
+                    value={inputValues[attr.name] ?? attr.value}
+                    onChange={(e) => handleValueChange(attr.name, e.target.value)}
+                    onBlur={(e) => handleBlur(attr.name, e.target.value)}
+                />
+                </li>
+                ))}
+            </ul>
+            </div>
+            ) : (
+            <div className="attribute-category">
+            <h3 className="category-title">Technical</h3>
+            <ul>
+            {attributes
+                .filter(attr => attr.category === 'Technical')
+                .map((attr) => (
+                <li 
+                key={attr.name}
+                className={`attribute-item ${isPositionAttribute(attr.name) ? 'highlighted' : ''}`}
+                >
+                <label>{attr.name}</label>
+                <input
+                    type="number"
+                    min="1"
+                    max="20"
+                    value={inputValues[attr.name] ?? attr.value}
+                    onChange={(e) => handleValueChange(attr.name, e.target.value)}
+                    onBlur={(e) => handleBlur(attr.name, e.target.value)}
+                />
+                </li>
+                ))}
+            </ul>
+            </div>
+            )}
+
+            {['Psychical', 'Physical'].map(category => (
+            <div key={category} className="attribute-category">
+            <h3 className="category-title">{category}</h3>
+            <ul>
+            {attributes
+                .filter(attr => attr.category === category)
+                .map((attr) => (
+                <li 
+                key={attr.name}
+                className={`attribute-item ${isPositionAttribute(attr.name) ? 'highlighted' : ''}`}
+                >
+                <label>{attr.name}</label>
+                <input
+                    type="number"
+                    min="1"
+                    max="20"
+                    value={inputValues[attr.name] ?? attr.value}
+                    onChange={(e) => handleValueChange(attr.name, e.target.value)}
+                    onBlur={(e) => handleBlur(attr.name, e.target.value)}
+                />
+                </li>
+                ))}
+            </ul>
+            </div>
             ))}
-          </ul>
         </div>
         )}
-
-        {['Psychical', 'Physical'].map(category => (
-        <div key={category} className="attribute-category">
-          <h3 className="category-title">{category}</h3>
-          <ul>
-          {attributes
-            .filter(attr => attr.category === category)
-            .map((attr) => (
-            <li key={attr.name}>
-              <label>{attr.name}</label>
-              <input
-              type="number"
-              min="1"
-              max="20"
-              value={attr.value}
-              onChange={(e) => handleValueChange(attr.name, Math.max(1, Math.min(20, parseInt(e.target.value, 10) || 1)))}
-              />
-            </li>
-            ))}
-          </ul>
-        </div>
-        ))}
-      </div>
-      )}
     </div>
   );
 };
