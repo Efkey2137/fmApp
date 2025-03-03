@@ -4,7 +4,7 @@ export class PlayerRatingEngine {
         "Balance", "Strength", "Jumping Reach", "Pace", "Agility"
     ];
     private readonly GK_ATTRIBUTES = [
-        "Reflexes", "One on Ones", "Jumping", "Aerial Reach", "Positioning", "Decisions"
+        "Reflexes", "One on Ones", "Jumping Reach", "Aerial Reach", "Positioning", "Decisions"
     ];
     private readonly CB_ATTRIBUTES = [
         "Jumping Reach", "Tackling", "Composure", "Concentration", "Strength"
