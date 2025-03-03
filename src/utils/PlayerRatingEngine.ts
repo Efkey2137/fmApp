@@ -1,31 +1,74 @@
 export class PlayerRatingEngine {
     private readonly META_ATTRIBUTES = [
-        "Drybling", "Koncentracja", "Przewidywanie", "Przyspieszenie",
-        "Równowaga", "Siła", "Skoczność", "Szybkość", "Zwinność"
+        "Dribbling", "Concentration", "Anticipation", "Acceleration",
+        "Balance", "Strength", "Jumping Reach", "Pace", "Agility"
+    ];
+    private readonly GK_ATTRIBUTES = [
+        "Reflexes", "One on Ones", "Jumping", "Aerial Reach", "Positioning", "Decisions"
+    ];
+    private readonly CB_ATTRIBUTES = [
+        "Jumping Reach", "Tackling", "Composure", "Concentration", "Strength"
+    ];
+    private readonly FB_ATTRIBUTES = [
+        "Work Rate", "Stamina", "Positioning", "Crossing", "Technique", "Marking", "Determination"
+    ];
+    private readonly DM_ATTRIBUTES = [
+        "First Touch", "Teamwork", "Composure", "Positioning", "Passing", "Tackling"
+    ];
+    private readonly CM_ATTRIBUTES = [
+        "Work Rate", "Stamina", "Passing", "Decisions"
+    ];
+    private readonly AM_ATTRIBUTES = [
+        "Vision", "Flair", "First Touch", "Off The Ball", "Technique"
+    ];
+    private readonly WING_ATTRIBUTES = [
+        "Agility", "Dribbling", "Balance", "Flair", "Technique"
+    ];
+    private readonly ST_ATTRIBUTES = [
+        "Off The Ball", "Composure", "Determination", "First Touch", "Finishing"
     ];
 
-    private readonly META_MULTIPLIER = 5;
+    private readonly META_MULTIPLIER = 2;
+    private readonly POS_MULTIPLIER = 4;
     private readonly MAX_ATTRIBUTE_VALUE = 20;
     private readonly TOTAL_ATTRIBUTES = 36;
 
     constructor() {}
 
-    calculateRating(attributes: { name: string; value: number }[]): number {
+    calculateRating(attributes: { name: string; value: number }[], position: string = ''): number {
         // Step 1: Calculate maximum possible sums
         const maxBaseSum = this.TOTAL_ATTRIBUTES * this.MAX_ATTRIBUTE_VALUE;
         const maxMetaSum = this.META_ATTRIBUTES.length * this.MAX_ATTRIBUTE_VALUE * this.META_MULTIPLIER;
-        const maxTotalSum = maxBaseSum + maxMetaSum - (this.META_ATTRIBUTES.length * this.MAX_ATTRIBUTE_VALUE);
+        
+        // Get position-specific attributes
+        let positionAttributes: string[] = [];
+        switch(position) {
+            case 'GK': positionAttributes = this.GK_ATTRIBUTES; break;
+            case 'CB': positionAttributes = this.CB_ATTRIBUTES; break;
+            case 'FB': positionAttributes = this.FB_ATTRIBUTES; break;
+            case 'DM': positionAttributes = this.DM_ATTRIBUTES; break;
+            case 'CM': positionAttributes = this.CM_ATTRIBUTES; break;
+            case 'AM': positionAttributes = this.AM_ATTRIBUTES; break;
+            case 'WING': positionAttributes = this.WING_ATTRIBUTES; break;
+            case 'ST': positionAttributes = this.ST_ATTRIBUTES; break;
+        }
+
+        const maxPosSum = position ? positionAttributes.length * this.MAX_ATTRIBUTE_VALUE * this.POS_MULTIPLIER : 0;
+        const maxTotalSum = maxBaseSum + maxMetaSum + maxPosSum - 
+            (this.META_ATTRIBUTES.length * this.MAX_ATTRIBUTE_VALUE) -
+            (position ? positionAttributes.length * this.MAX_ATTRIBUTE_VALUE : 0);
 
         // Step 2: Calculate weighted sum of player's attributes
         const weightedSum = attributes.reduce((sum, attr) => {
-            const multiplier = this.META_ATTRIBUTES.includes(attr.name) ? this.META_MULTIPLIER : 1;
+            let multiplier = 1;
+            if (this.META_ATTRIBUTES.includes(attr.name)) multiplier *= this.META_MULTIPLIER;
+            if (positionAttributes.includes(attr.name)) multiplier *= this.POS_MULTIPLIER;
             return sum + (attr.value * multiplier);
         }, 0);
 
         // Step 3: Normalize to 1-100 scale
         const rating = (weightedSum / maxTotalSum) * 100;
         
-        // Round to 2 decimal places
         return Math.round(rating * 100) / 100;
     }
 }

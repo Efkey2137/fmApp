@@ -8,51 +8,62 @@ const RatePlayer = () => {
   // Define static attributes
   const staticAttributes = [
     // Technical Attributes
-    { category: "Technical", name: "Długie wrzuty", value: 0 },
-    { category: "Technical", name: "Dośrodkowania", value: 0 },
-    { category: "Technical", name: "Drybling", value: 0 },
-    { category: "Technical", name: "Gra głową", value: 0 },
-    { category: "Technical", name: "Krycie", value: 0 },
-    { category: "Technical", name: "Odbiór piłki", value: 0 },
-    { category: "Technical", name: "Podania", value: 0 },
-    { category: "Technical", name: "Przyjęcie piłki", value: 0 },
-    { category: "Technical", name: "Rzuty karne", value: 0 },
-    { category: "Technical", name: "Rzuty rożne", value: 0 },
-    { category: "Technical", name: "Rzuty wolne", value: 0 },
-    { category: "Technical", name: "Strzały z dystansu", value: 0 },
-    { category: "Technical", name: "Technika", value: 0 },
-    { category: "Technical", name: "Wykańczanie akcji", value: 0 },
+    { category: "Technical", name: "Long Throws", value: 0 },
+    { category: "Technical", name: "Crossing", value: 0 },
+    { category: "Technical", name: "Dribbling", value: 0 },
+    { category: "Technical", name: "Heading", value: 0 },
+    { category: "Technical", name: "Marking", value: 0 },
+    { category: "Technical", name: "Tackling", value: 0 },
+    { category: "Technical", name: "Passing", value: 0 },
+    { category: "Technical", name: "First Touch", value: 0 },
+    { category: "Technical", name: "Penalty Taking", value: 0 },
+    { category: "Technical", name: "Corners", value: 0 },
+    { category: "Technical", name: "Free Kick Tacking", value: 0 },
+    { category: "Technical", name: "Long Shots", value: 0 },
+    { category: "Technical", name: "Technique", value: 0 },
+    { category: "Technical", name: "Finishing", value: 0 },
 
     // Psychical Attributes 
-    { category: "Psychical", name: "Agresja", value: 0 },
-    { category: "Psychical", name: "Błyskotliwość", value: 0 },
-    { category: "Psychical", name: "Decyzje", value: 0 },
-    { category: "Psychical", name: "Determinacja", value: 0 },
-    { category: "Psychical", name: "Gra bez piłki", value: 0 },
-    { category: "Psychical", name: "Koncentracja", value: 0 },
-    { category: "Psychical", name: "Opanowanie", value: 0 },
-    { category: "Psychical", name: "Pracowitość", value: 0 },
-    { category: "Psychical", name: "Przegląd sytuacji", value: 0 },
-    { category: "Psychical", name: "Przewidywanie", value: 0 },
-    { category: "Psychical", name: "Przywództwo", value: 0 },
-    { category: "Psychical", name: "Ustawianie się", value: 0 },
-    { category: "Psychical", name: "Waleczność", value: 0 },
-    { category: "Psychical", name: "Współpraca", value: 0 },
+    { category: "Psychical", name: "Aggression", value: 0 },
+    { category: "Psychical", name: "Flair", value: 0 },
+    { category: "Psychical", name: "Decisions", value: 0 },
+    { category: "Psychical", name: "Determination", value: 0 },
+    { category: "Psychical", name: "Off The Ball", value: 0 },
+    { category: "Psychical", name: "Concentration", value: 0 },
+    { category: "Psychical", name: "Composure", value: 0 },
+    { category: "Psychical", name: "Work Rate", value: 0 },
+    { category: "Psychical", name: "Vision", value: 0 },
+    { category: "Psychical", name: "Anticipation", value: 0 },
+    { category: "Psychical", name: "Leadership", value: 0 },
+    { category: "Psychical", name: "Positioning", value: 0 },
+    { category: "Psychical", name: "Bravery", value: 0 },
+    { category: "Psychical", name: "Teamwork", value: 0 },
 
     // Physical Attributes
-    { category: "Physical", name: "Przyspieszenie", value: 0 },
-    { category: "Physical", name: "Równowaga", value: 0 },
-    { category: "Physical", name: "Siła", value: 0 },
-    { category: "Physical", name: "Skoczność", value: 0 },
-    { category: "Physical", name: "Sprawność", value: 0 },
-    { category: "Physical", name: "Szybkość", value: 0 },
-    { category: "Physical", name: "Wytrzymałość", value: 0 },
-    { category: "Physical", name: "Zwinność", value: 0 },
+    { category: "Physical", name: "Acceleration", value: 0 },
+    { category: "Physical", name: "Balance", value: 0 },
+    { category: "Physical", name: "Strength", value: 0 },
+    { category: "Physical", name: "Jumping Reach", value: 0 },
+    { category: "Physical", name: "Natural Fitness", value: 0 },
+    { category: "Physical", name: "Pace", value: 0 },
+    { category: "Physical", name: "Stamina", value: 0 },
+    { category: "Physical", name: "Agility", value: 0 },
+  ];
+  const Positions = [
+    {name: "Goalkeeper", sc: "GK"},
+    {name: "Centre Back", sc: "CB"},
+    {name: "Full Back", sc: "FB"},
+    {name: "Defensive Midfielder", sc: "DM"},
+    {name: "Central Midfielder", sc: "CM"},
+    {name: "Attacking Midfielder", sc: "AM"},
+    {name: "Winger", sc: "WING"},
+    {name: "Striker", sc: "ST"}
   ];
 
   const [attributes, setAttributes] = useState(staticAttributes);
   const [loading, setLoading] = useState(false);
   const [playerRating, setPlayerRating] = useState<number | null>(null);
+  const [selectedPosition, setSelectedPosition] = useState<string>('');
 
   const onDrop = (acceptedFiles: File[]) => {
     setLoading(true);
@@ -101,9 +112,11 @@ const RatePlayer = () => {
     }
   };
 
+  
+
   const calculatePlayerRating = () => {
     const ratingEngine = new PlayerRatingEngine();
-    const rating = ratingEngine.calculateRating(attributes);
+    const rating = ratingEngine.calculateRating(attributes, selectedPosition);
     setPlayerRating(rating);
   };
 
@@ -151,12 +164,27 @@ const RatePlayer = () => {
                   ))}
               </ul>
               {category === 'Physical' && ( 
-                <button
-                  className="calculate-button"
-                  onClick={calculatePlayerRating}
-                >
-                  Oblicz rating
-                </button>
+                //Input to select position of the player
+                <>
+                    <select
+                    className="positions"
+                    onChange={(e) => {
+                      setSelectedPosition(e.target.value);
+                      const ratingEngine = new PlayerRatingEngine();
+                      const rating = ratingEngine.calculateRating(attributes, e.target.value);
+                      setPlayerRating(rating);
+                    }}
+                    value={selectedPosition}
+                    >
+                    <option value="">Select position</option>
+                    {Positions.map((position) => (
+                      <option key={position.sc} value={position.sc}>
+                      {position.name}
+                      </option>
+                    ))}
+                    </select>
+                  
+                  </>
               )}
             </div>
           ))}
