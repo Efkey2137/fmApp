@@ -27,7 +27,6 @@ const Menu: React.FC<MenuProps> = ({ menuOpen, setMenuOpen }) => {
         <li><Link to="/wonderkids" className="App-link" onClick={handleCloseMenu}><Star/>Wonderkids</Link></li>
         <li><Link to="/save-ideas" className="App-link" onClick={handleCloseMenu}><Lightbulb/>Save Ideas</Link></li>
         <li><Link to="/faq" className="App-link" onClick={handleCloseMenu}><MessageCircleQuestion/>FAQ</Link></li>
-        <li><Link to="/log-in" className="App-link" onClick={handleCloseMenu}><User/>Log In</Link></li>
       </ul>
     </nav>
   );

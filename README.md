@@ -1,46 +1,43 @@
-# Getting Started with Create React App
+# AskMngr - Football Manager Assistant
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern web application built with React that helps Football Manager players analyze and track player data, discover wonderkids, and find save ideas.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### 🔍 Rate Player
+Upload player attributes from Football Manager and get an instant rating based on their position and key attributes. Supports:
+- Attribute analysis for all positions
+- Position-specific rating calculations
+- Direct RTF file upload from Football Manager
 
-### `npm start`
+### ⚖️ Compare Players
+Compare multiple players side by side to make informed transfer and team selection decisions.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 📈 Track Progress
+Monitor your players' development over time by tracking attribute changes and improvements.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### ⭐ Wonderkids Database
+Access a curated database of Football Manager's most promising young talents:
+- Filter by various criteria
+- Sort by potential, age, position and more
+- Regular updates with new discoveries
 
-### `npm test`
+### 💡 Save Ideas
+Browse through interesting save game scenarios and challenges:
+- Fallen Giants
+- Club Rebuilds
+- Road to Glory challenges
+- And more
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+Visit [AskMngr](https://askmngr.vercel.app) to start using the application immediately!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The app works best in modern browsers like Chrome, Firefox, or Edge. Simply:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Navigate to [askmngr.vercel.app](https://askmngr.vercel.app)
+2. Start analyzing your Football Manager game data
+3. Enjoy your enhanced Football Manager experience!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+No account or installation required - jump right in and start exploring.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
