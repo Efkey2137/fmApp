@@ -10,6 +10,7 @@ import Wonderkids from "./pages/Wonderkids";
 import SaveIdeas from "./pages/SaveIdeas";
 import Home from "./pages/Dashboard"
 import FAQ from "./pages/Faq"
+import RateTeam from "./pages/RateTeam";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/rate-player" element={<RatePlayer />} />
+            <Route path="/rate-team" element={<RateTeam />} />
             <Route path="/compare" element={<Compare />} />
             <Route path="/track-progress" element={<TrackProgress />} />
             <Route path="/save-ideas" element={<SaveIdeas />} />

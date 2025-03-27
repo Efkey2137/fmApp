@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../css/Menu.css";
-import { LayoutDashboard, Diff, Star, ChartLine, Lightbulb, SearchCheck, MessageCircleQuestion, User  } from 'lucide-react';
+import { LayoutDashboard, Diff, Star, ChartLine, Lightbulb, SearchCheck, MessageCircleQuestion, NotepadText   } from 'lucide-react';
 import logo from "../assets/logo.png";
 
 
@@ -23,6 +23,7 @@ const Menu: React.FC<MenuProps> = ({ menuOpen, setMenuOpen }) => {
         <li><Link to="/" className="App-link" onClick={handleCloseMenu}><LayoutDashboard/>Dashboard</Link></li>
         <li><Link to="/compare" className="App-link" onClick={handleCloseMenu}><Diff/>Compare</Link></li>
         <li><Link to="/rate-player" className="App-link" onClick={handleCloseMenu}><SearchCheck />Rate Player</Link></li>
+        <li><Link to="/rate-team" className="App-link" onClick={handleCloseMenu}><NotepadText />Rate Team</Link></li>
         <li><Link to="/track-progress" className="App-link" onClick={handleCloseMenu}><ChartLine/>Track Progress</Link></li>
         <li><Link to="/wonderkids" className="App-link" onClick={handleCloseMenu}><Star/>Wonderkids</Link></li>
         <li><Link to="/save-ideas" className="App-link" onClick={handleCloseMenu}><Lightbulb/>Save Ideas</Link></li>

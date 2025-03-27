@@ -1,5 +1,5 @@
 import React from "react";
-import { Diff, Star, ChartLine, Lightbulb, SearchCheck, MessageCircleQuestion  } from 'lucide-react';
+import { Diff, Star, ChartLine, Lightbulb, SearchCheck, MessageCircleQuestion, NotepadText  } from 'lucide-react';
 import { Link } from "react-router-dom";
 import "../css/Dashboard.css";
 
@@ -7,6 +7,7 @@ import "../css/Dashboard.css";
 const cards = [
   { id: 1, title: "Compare", icon: Diff, link: "/compare" },
   { id: 2, title: "Rate Player", icon: SearchCheck, link: "/rate-player" },
+  { id: 7, title: "Rate Team", icon: NotepadText, link: "/rate-team" },
   { id: 3, title: "Track Progress", icon: ChartLine, link: "/track-progress" },
   { id: 4, title: "Wonderkids", icon: Star, link: "/wonderkids" },
   { id: 5, title: "Save Ideas", icon: Lightbulb, link: "/save-ideas" },
