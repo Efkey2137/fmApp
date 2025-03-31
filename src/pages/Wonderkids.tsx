@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { ArrowBigDown, ArrowBigUp } from 'lucide-react';
 import useFetch from "../hooks/useFetch";
 import useCustomSort from "../hooks/useCustomSort";
-import "../css/Wonderkids.css";
 
 const Wonderkids: React.FC = () => {
     const { fetchCsvData } = useFetch();
@@ -64,40 +63,71 @@ const Wonderkids: React.FC = () => {
     const sortedFilteredData = filterData(sortedData); 
 
     return (
-        <div className="wonderkids">
-            <h1>Wonderkids – The Future Stars of Football</h1>
-            <p>This section features a list of the most talented young players recognized as wonderkids...</p>
+        <div className=" flex flex-col w-full text-center overflow-x-hidden">
+            <h1 className="text-3xl md:text-4xl mt-8 font-black">
+                Wonderkids – The Future Stars of Football
+            </h1>
+            
+            <p className="text-base mt-4 text-center">
+                This section features a list of the most talented young players recognized as wonderkids...
+            </p>
+            
             <input
                 type="text"
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="search-box"
+                className="w-full p-4 mt-8 border border-primary rounded-md
+                         bg-[#1b1b1b] text-gray-200
+                         outline-none transition-all duration-300
+                         focus:border-primary-hover"
             />
+
             {sortedFilteredData.length > 0 ? ( 
-                <table className="wonderkids-table">
-                    <thead>
-                        <tr>
-                            {headers.map((header) => ( 
-                                <th key={header} onClick={() => handleSort(header)} className="sortable-header">
-                                    <span>{formatHeader(header)}</span> 
-                                    {sortKey === header ? (sortDirection === "asc" ? " ▲" : " ▼") : ""} 
-                                </th>
-                            ))}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {sortedFilteredData.map((wonderkid, index) => ( 
-                            <tr key={index}>
-                                {headers.map((header) => (
-                                    <td key={header}>{wonderkid[header]}</td>
+                <div className="overflow-x-auto mt-20 w-full scrollbar">
+                    <table className="w-full border-collapse text-left select-text">
+                        <thead>
+                            <tr>
+                                {headers.map((header) => ( 
+                                    <th 
+                                        key={header} 
+                                        onClick={() => handleSort(header)}
+                                        className="bg-primary px-4 py-4 text-left min-w-[61px] 
+                                                 cursor-pointer hover:bg-primary-hover
+                                                 text-gray-100 transition-colors duration-300"
+                                    >
+                                        <span>{formatHeader(header)}</span> 
+                                        {sortKey === header ? (
+                                            <span className="ml-1">
+                                                {sortDirection === "asc" ? "▲" : "▼"}
+                                            </span>
+                                        ) : null} 
+                                    </th>
                                 ))}
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {sortedFilteredData.map((wonderkid, index) => ( 
+                                <tr 
+                                    key={index}
+                                    className={`
+                                        transition-colors duration-200
+                                        hover:bg-[#393046] cursor-pointer
+                                        ${index % 2 === 0 ? 'bg-[#1b1b1b]' : 'bg-[#222031]'}
+                                    `}
+                                >
+                                    {headers.map((header) => (
+                                        <td key={header} className="p-4 border-b border-[#393046]">
+                                            {wonderkid[header]}
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             ) : (
-                <p>No results found...</p>
+                <p className="text-left mt-4">No results found...</p>
             )}
         </div>
     );

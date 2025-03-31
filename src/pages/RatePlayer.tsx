@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import PlayerRatingEngine from "../utils/PlayerRatingEngine";
-import { staticAttributes } from "../data/StaticAttributes";  // Zaimportowanie staticAttributes
+import { staticAttributes } from "../data/StaticAttributes";
 import "../App.css";
-import "../css/RatePlayer.css";
+// import "../css/RatePlayer.css";
 
 const RatePlayer = () => {
   const GK_ATTRIBUTES = [
@@ -31,8 +31,6 @@ const RatePlayer = () => {
     "Off The Ball", "Composure", "Determination", "First Touch", "Finishing"
   ];
 
-  // Define static attributes
-  
   const Positions = [
     { name: "Goalkeeper", sc: "GK" },
     { name: "Centre Back", sc: "CB" },
@@ -44,7 +42,6 @@ const RatePlayer = () => {
     { name: "Striker", sc: "ST" }
   ];
 
-  
   const [attributes, setAttributes] = useState(staticAttributes);
   const [loading, setLoading] = useState(false);
   const [playerRating, setPlayerRating] = useState<number | null>(null);
@@ -60,14 +57,14 @@ const RatePlayer = () => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
         const target = event.target as HTMLElement;
-        if (!target.closest('.position-input-container')) {
+        if (!target.closest('.position-selector')) {
             setShowPositions(false);
         }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-}, []);
+  }, []);
 
   const onDrop = (acceptedFiles: File[]) => {
     setLoading(true);
@@ -86,13 +83,12 @@ const RatePlayer = () => {
           extractedValues.push(value);
         }
     
-        let valueIndex = 0; // Indeks dla wartości z extractedValues
+        let valueIndex = 0;
     
         const updatedAttributes = staticAttributes.map((attr) => {
           let categoryIndex = valueIndex;
     
           if (selectedPosition === 'GK') {
-            // Dla bramkarza (Goalkeeper) 
             if (attr.category === "Goalkeeping" && valueIndex < 13) {
               categoryIndex = valueIndex; 
               valueIndex++;
@@ -103,10 +99,9 @@ const RatePlayer = () => {
               categoryIndex = valueIndex;
               valueIndex++;
             } else {
-              return attr; // Pozostaw oryginalną wartość, jeśli nie pasuje do kategorii
+              return attr;
             }
           } else {
-            // Dla pozostałych pozycji
             if (attr.category === "Technical" && valueIndex < 14) {
               categoryIndex = valueIndex;
               valueIndex++;
@@ -117,7 +112,7 @@ const RatePlayer = () => {
               categoryIndex = valueIndex;
               valueIndex++;
             } else {
-              return attr; // Pozostaw oryginalną wartość, jeśli nie pasuje do kategorii
+              return attr;
             }
           }
     
@@ -128,9 +123,6 @@ const RatePlayer = () => {
         setLoading(false);
       }
     };
-    
-    
-    
 
     reader.onerror = (error) => {
       console.error('Error reading file:', error);
@@ -141,12 +133,10 @@ const RatePlayer = () => {
   };
 
   const handleValueChange = (name: string, value: string) => {
-    // Update the input value immediately
     setInputValues(prev => ({...prev, [name]: value}));
   };
 
   const handleBlur = (name: string, value: string) => {
-    // Validate and update the actual attribute value when input loses focus
     const numValue = parseInt(value, 10);
     const validValue = Math.max(1, Math.min(20, numValue || 1));
     
@@ -155,7 +145,6 @@ const RatePlayer = () => {
     if (index !== -1) {
       updatedAttributes[index].value = validValue;
       setAttributes(updatedAttributes);
-      // Update input value to show the validated number
       setInputValues(prev => ({...prev, [name]: validValue.toString()}));
     }
   };
@@ -195,162 +184,193 @@ const RatePlayer = () => {
     setSelectedPosition(position.sc);
     setShowPositions(false);
 
-    // Get previous position type (GK or field player)
     const wasGoalkeeper = selectedPosition === 'GK';
     const isGoalkeeper = position.sc === 'GK';
 
-    // Only reset attributes when switching between GK and field player or vice versa
     if (wasGoalkeeper !== isGoalkeeper) {
-        // Reset all attributes to 0
         const updatedAttributes = attributes.map(attr => ({
             ...attr,
             value: 0
         }));
         
         setAttributes(updatedAttributes);
-        setInputValues({}); // Reset input values
+        setInputValues({});
     }
-};
+  };
 
   return (
-    <div className="dropzone-container">
-        <div className="controls-container">
-            <div {...getRootProps()} className="dropzone-area">
-                <input {...getInputProps()} />
-                <p>Drag and drop the RTF file from FM, or click to select it.</p>
-            </div>
-
-            {playerRating !== null && (
-                <div className={`rating-display ${
-                    playerRating >= 85 ? 'rating-border-gold' :
-                    playerRating >= 75 ? 'rating-border-green' :
-                    playerRating >= 65 ? 'rating-border-blue' :
-                    playerRating >= 55 ? 'rating-border-orange' :
-                    playerRating >= 45 ? 'rating-border-yellow' :
-                    playerRating >= 35 ? 'rating-border-red' :
-                    'rating-border-purple'
-                }`}>
-                    <h2 className={`${
-                        playerRating >= 85 ? 'rating-gold' :
-                        playerRating >= 75 ? 'rating-green' :
-                        playerRating >= 65 ? 'rating-blue' :
-                        playerRating >= 55 ? 'rating-orange' :
-                        playerRating >= 45 ? 'rating-yellow' :
-                        playerRating >= 35 ? 'rating-red' :
-                        'rating-purple'
-                    }`}>
-                        Player rating: {playerRating}
-                    </h2>
-                </div>
-            )}
-
-            <div className="position-input-container">
-                <input
-                    className="position-input"
-                    type="text"
-                    placeholder="Select position"
-                    value={inputPosition}
-                    onChange={(e) => setInputPosition(e.target.value)}
-                    onFocus={() => setShowPositions(true)}
-                    readOnly
-                />
-                {showPositions && (
-                    <div className="positions-dropdown">
-                        {Positions.map((position) => (
-                            <div
-                                key={position.sc}
-                                className="position-option"
-                                onClick={() => handlePositionSelect(position)}
-                            >
-                                {position.name}
-                            </div>
-                        ))}
-                    </div>
-                )}
-            </div>
+    <div className="max-w-[1400px] mx-auto p-8 flex flex-col gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-8 w-full">
+        <div 
+          {...getRootProps()} 
+          className="flex items-center justify-center w-full h-[100px] border-2 border-dashed border-primary 
+                     rounded-xl bg-gradient-to-br from-bg-dark to-bg-darker cursor-pointer 
+                     transition-all duration-300 hover:border-opacity-70"
+        >
+          <input {...getInputProps()} />
+          <p className="text-text-light text-lg text-center p-4">
+            Drag and drop the RTF file from FM, or click to select it.
+          </p>
         </div>
 
-        {loading && <p>⏳ Przetwarzanie pliku...</p>}
-
-        {attributes.length > 0 && (
-        <div className="attributes-container">
-            {selectedPosition === 'GK' ? (
-            <div className="attribute-category">
-            <h3 className="category-title">Goalkeeping</h3>
-            <ul>
-            {attributes
-                .filter(attr => attr.category === 'Goalkeeping')
-                .map((attr) => (
-                <li 
-                key={attr.name}
-                className={`attribute-item ${isPositionAttribute(attr.name) ? 'highlighted' : ''}`}
-                >
-                <label>{attr.name}</label>
-                <input
-                    type="number"
-                    min="1"
-                    max="20"
-                    value={inputValues[attr.name] ?? attr.value}
-                    onChange={(e) => handleValueChange(attr.name, e.target.value)}
-                    onBlur={(e) => handleBlur(attr.name, e.target.value)}
-                />
-                </li>
-                ))}
-            </ul>
-            </div>
-            ) : (
-            <div className="attribute-category">
-            <h3 className="category-title">Technical</h3>
-            <ul>
-            {attributes
-                .filter(attr => attr.category === 'Technical')
-                .map((attr) => (
-                <li 
-                key={attr.name}
-                className={`attribute-item ${isPositionAttribute(attr.name) ? 'highlighted' : ''}`}
-                >
-                <label>{attr.name}</label>
-                <input
-                    type="number"
-                    min="1"
-                    max="20"
-                    value={inputValues[attr.name] ?? attr.value}
-                    onChange={(e) => handleValueChange(attr.name, e.target.value)}
-                    onBlur={(e) => handleBlur(attr.name, e.target.value)}
-                />
-                </li>
-                ))}
-            </ul>
-            </div>
-            )}
-
-            {['Psychical', 'Physical'].map(category => (
-            <div key={category} className="attribute-category">
-            <h3 className="category-title">{category}</h3>
-            <ul>
-            {attributes
-                .filter(attr => attr.category === category)
-                .map((attr) => (
-                <li 
-                key={attr.name}
-                className={`attribute-item ${isPositionAttribute(attr.name) ? 'highlighted' : ''}`}
-                >
-                <label>{attr.name}</label>
-                <input
-                    type="number"
-                    min="1"
-                    max="20"
-                    value={inputValues[attr.name] ?? attr.value}
-                    onChange={(e) => handleValueChange(attr.name, e.target.value)}
-                    onBlur={(e) => handleBlur(attr.name, e.target.value)}
-                />
-                </li>
-                ))}
-            </ul>
-            </div>
-            ))}
-        </div>
+        {playerRating !== null && (
+          <div className={`flex items-center justify-center w-full h-[100px] rounded-xl 
+                          bg-gradient-to-br from-bg-dark to-bg-darker
+                          ${playerRating >= 85 ? 'border-2 border-rating-gold' :
+                            playerRating >= 75 ? 'border-2 border-rating-green' :
+                            playerRating >= 65 ? 'border-2 border-rating-blue' :
+                            playerRating >= 55 ? 'border-2 border-rating-orange' :
+                            playerRating >= 45 ? 'border-2 border-rating-yellow' :
+                            playerRating >= 35 ? 'border-2 border-rating-red' :
+                            'border-2 border-rating-purple'}`}
+          >
+            <h2 className={`text-2xl font-semibold
+                           ${playerRating >= 85 ? 'text-rating-gold' :
+                             playerRating >= 75 ? 'text-rating-green' :
+                             playerRating >= 65 ? 'text-rating-blue' :
+                             playerRating >= 55 ? 'text-rating-orange' :
+                             playerRating >= 45 ? 'text-rating-yellow' :
+                             playerRating >= 35 ? 'text-rating-red' :
+                             'text-rating-purple'}`}
+            >
+              Player rating: {playerRating}
+            </h2>
+          </div>
         )}
+
+        <div className="relative w-full h-[100px] position-selector">
+          <input
+            type="text"
+            placeholder="Select position"
+            value={inputPosition}
+            onClick={() => setShowPositions(!showPositions)}
+            readOnly
+            className="w-full h-full border-2 border-border-color rounded-xl
+                       bg-gradient-to-br from-bg-dark to-bg-darker text-text-light
+                       text-xl text-center cursor-pointer px-4
+                       focus:outline-none focus:border-primary transition-colors duration-300"
+          />
+          {showPositions && (
+            <div className="absolute top-full left-0 right-0 mt-2 
+                        bg-[#1b1b1b] border border-border-color rounded-lg 
+                        shadow-lg z-50 grid grid-cols-2 gap-0.5 p-1">
+              {Positions.map((position) => (
+                <div
+                  key={position.sc}
+                  onClick={() => handlePositionSelect(position)}
+                  className="p-3 text-text-light text-base font-medium
+                           bg-[#222031] rounded-md
+                           hover:bg-primary/10 hover:text-primary
+                           transition-all duration-200 cursor-pointer
+                           flex items-center justify-center"
+                >
+                  {position.name}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {loading && <p className="text-center text-primary text-lg">⏳ Processing file...</p>}
+
+      {attributes.length > 0 && (
+        <div className="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-8">
+          {selectedPosition === 'GK' ? (
+            <div className="bg-gradient-to-br from-bg-dark to-bg-darker rounded-xl p-6 border border-border-color">
+              <h3 className="text-xl text-primary mb-3 pb-3 border-b-2 border-border-color">
+                Goalkeeping
+              </h3>
+              <ul className="space-y-2">
+                {attributes
+                  .filter(attr => attr.category === 'Goalkeeping')
+                  .map((attr) => (
+                    <li key={attr.name} 
+                        className={`flex items-center justify-between p-2
+                                  ${isPositionAttribute(attr.name) ? 
+                                    'bg-gradient-to-r from-primary/10 to-transparent border-l-3 border-primary pl-4' : ''}`}>
+                      <label className="text-text-light text-lg flex-1">{attr.name}</label>
+                      <input
+                        type="number"
+                        min="1"
+                        max="20"
+                        value={inputValues[attr.name] ?? attr.value}
+                        onChange={(e) => handleValueChange(attr.name, e.target.value)}
+                        onBlur={(e) => handleBlur(attr.name, e.target.value)}
+                        className="w-[60px] p-2 border border-border-color rounded-md bg-bg-darker text-text-light 
+                                 text-lg text-center focus:outline-none focus:border-primary
+                                 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none 
+                                 [&::-webkit-inner-spin-button]:appearance-none"
+                      />
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          ) : (
+            <div className="bg-gradient-to-br from-bg-dark to-bg-darker rounded-xl p-6 border border-border-color">
+              <h3 className="text-xl text-primary mb-3 pb-3 border-b-2 border-border-color">
+                Technical
+              </h3>
+              <ul className="space-y-2">
+                {attributes
+                  .filter(attr => attr.category === 'Technical')
+                  .map((attr) => (
+                    <li key={attr.name} 
+                        className={`flex items-center justify-between p-2
+                                  ${isPositionAttribute(attr.name) ? 
+                                    'bg-gradient-to-r from-primary/10 to-transparent border-l-3 border-primary pl-4' : ''}`}>
+                      <label className="text-text-light text-lg flex-1">{attr.name}</label>
+                      <input
+                        type="number"
+                        min="1"
+                        max="20"
+                        value={inputValues[attr.name] ?? attr.value}
+                        onChange={(e) => handleValueChange(attr.name, e.target.value)}
+                        onBlur={(e) => handleBlur(attr.name, e.target.value)}
+                        className="w-[60px] p-2 border border-border-color rounded-md bg-bg-darker text-text-light 
+                                 text-lg text-center focus:outline-none focus:border-primary
+                                 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none 
+                                 [&::-webkit-inner-spin-button]:appearance-none"
+                      />
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          )}
+
+          {['Psychical', 'Physical'].map(category => (
+            <div key={category} className="bg-gradient-to-br from-bg-dark to-bg-darker rounded-xl p-6 border border-border-color">
+              <h3 className="text-xl text-primary mb-3 pb-3 border-b-2 border-border-color">
+                {category}
+              </h3>
+              <ul className="space-y-2">
+                {attributes
+                  .filter(attr => attr.category === category)
+                  .map((attr) => (
+                    <li key={attr.name} 
+                        className={`flex items-center justify-between p-2
+                                  ${isPositionAttribute(attr.name) ? 
+                                    'bg-gradient-to-r from-primary/10 to-transparent border-l-3 border-primary pl-4' : ''}`}>
+                      <label className="text-text-light text-lg flex-1">{attr.name}</label>
+                      <input
+                        type="number"
+                        min="1"
+                        max="20"
+                        value={inputValues[attr.name] ?? attr.value}
+                        onChange={(e) => handleValueChange(attr.name, e.target.value)}
+                        onBlur={(e) => handleBlur(attr.name, e.target.value)}
+                        className="w-[60px] p-2 border border-border-color rounded-md bg-bg-darker text-text-light 
+                                 text-lg text-center focus:outline-none focus:border-primary
+                                 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none 
+                                 [&::-webkit-inner-spin-button]:appearance-none"
+                      />
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

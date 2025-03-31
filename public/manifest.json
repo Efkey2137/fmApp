@@ -1,6 +1,6 @@
 {
   "short_name": "AskMngr",
-  "name": "Ask Manager App",
+  "name": "AskMngr - Football Manager Assistant",
   "icons": [
     {
       "src": "favicon.ico",
@@ -15,11 +15,35 @@
     {
       "src": "icon.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "orientation": "portrait",
+  "theme_color": "#9a66ff",
+  "background_color": "#1b1b1b",
+  "description": "Football Manager analysis and player rating tool",
+  "dir": "ltr",
+  "lang": "pl-PL",
+  "categories": ["sports", "games", "utilities"],
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "shortcuts": [
+    {
+      "name": "Rate Player",
+      "short_name": "Rate",
+      "description": "Rate a player",
+      "url": "/rate-player"
+    },
+    {
+      "name": "Compare Players",
+      "short_name": "Compare",
+      "description": "Compare players",
+      "url": "/compare"
+    }
+  ],
+  "screenshots": []
 }

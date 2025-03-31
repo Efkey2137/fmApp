@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useFileUpload } from '../hooks/useFileUpload';
 import { useTeamStats } from '../hooks/useTeamStats';
-import '../css/RateTeam.css';
+import "../index.css"; // Import your CSS styles here
+// import '../css/RateTeam.css';
 
 type SortField = 'name' | 'age' | 'position' | 'average';
 type SortDirection = 'asc' | 'desc';
@@ -11,14 +12,12 @@ const RateTeam: React.FC = () => {
   const { uploadFile } = useFileUpload(setHtmlContent);
   const { playerStats, teamAverage, teamAverageAge } = useTeamStats(htmlContent);
   
-  // Dodane stany do sortowania
   const [sortField, setSortField] = useState<SortField>('average');
   const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
 
   const handleDownloadView = () => {
     const viewFileUrl = `${process.env.PUBLIC_URL}/RateTeamView.fmf`;
     
-    // Tworzenie elementu a do pobrania pliku
     const link = document.createElement('a');
     link.href = viewFileUrl;
     link.download = 'RateTeamView.fmf';
@@ -27,19 +26,15 @@ const RateTeam: React.FC = () => {
     document.body.removeChild(link);
   };
 
-  // Funkcja do sortowania
   const handleSort = (field: SortField) => {
     if (field === sortField) {
-      // Jeśli kliknięto tę samą kolumnę, zmień kierunek sortowania
       setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
     } else {
-      // Jeśli kliknięto inną kolumnę, ustaw ją jako aktualną i sortuj malejąco
       setSortField(field);
       setSortDirection('desc');
     }
   };
 
-  // Sortowanie danych
   const sortedPlayers = [...playerStats].sort((a, b) => {
     if (sortField === 'name') {
       return sortDirection === 'asc' 
@@ -53,98 +48,113 @@ const RateTeam: React.FC = () => {
       return sortDirection === 'asc' 
         ? a.position.localeCompare(b.position) 
         : b.position.localeCompare(a.position);
-    } else { // average
+    } else {
       return sortDirection === 'asc' 
         ? a.average - b.average 
         : b.average - a.average;
     }
   });
 
-  // Funkcja zwracająca klasę dla nagłówka kolumny
-  const getSortClass = (field: SortField) => {
+  const getSortIndicator = (field: SortField) => {
     if (field === sortField) {
-      return sortDirection === 'asc' ? 'sort-asc' : 'sort-desc';
+      return sortDirection === 'asc' ? ' ↑' : ' ↓';
     }
     return '';
   };
 
   return (
-    <div className="rate-team-container">
-      
-      
-      
-      {/* <hr className="section-divider" /> */}
-      
-      {/* Sekcja wgrywania pliku HTML */}
-      <div className="upload-section">
-        <h2>Import html file with squad data</h2>
-        <input type="file" onChange={uploadFile} accept=".html" />
+    <div className="max-w-[1400px] mx-auto p-8 flex flex-col gap-6">
+      {/* Upload Section */}
+      <div className="bg-[#151515] p-8 rounded-xl shadow-md">
+        <h2 className="text-2xl font-semibold mb-4 text-primary">Import html file with squad data</h2>
+        <label className="relative block">
+          <input 
+            type="file" 
+            onChange={uploadFile} 
+            accept=".html"
+            className="w-full p-5 border-2 border-dashed border-primary rounded-xl 
+                     bg-[#252525] text-white cursor-pointer
+                     file:mr-4 file:py-2 file:px-4
+                     file:rounded-lg file:border-0
+                     file:text-sm file:font-semibold
+                     file:bg-primary file:text-white
+                     hover:file:bg-primary-hover
+                     hover:border-primary-hover
+                     transition-all duration-300 hover:shadow-lg
+                     focus:outline-none focus:border-primary-hover
+                     md:p-6"
+          />
+        </label>
       </div>
 
-      {/* Wyświetlanie statystyk */}
+      {/* Stats Section */}
       {playerStats.length > 0 && (
-        <div className="stats-section">
-          <h2>Team Statistic</h2>
-          <div className="team-summary">
-            <p><strong>Team Average:</strong> {teamAverage.toFixed(1)}</p>
-            <p><strong>Team Average Age:</strong> {teamAverageAge.toFixed(1)}</p>
+        <div className="bg-[#151515] p-8 rounded-xl shadow-md">
+          <h2 className="text-2xl font-semibold mb-4 text-primary">Team Statistics</h2>
+          <div className="bg-[#1b1b1b] p-6 rounded-lg mb-6 flex flex-wrap gap-8">
+            <p className="text-lg">
+              <span className="text-primary font-semibold mr-2">Team Average:</span>
+              {teamAverage.toFixed(1)}
+            </p>
+            <p className="text-lg">
+              <span className="text-primary font-semibold mr-2">Team Average Age:</span>
+              {teamAverageAge.toFixed(1)}
+            </p>
           </div>
-          <table>
-            <thead>
-              <tr>
-                <th 
-                  className={getSortClass('name')} 
-                  onClick={() => handleSort('name')}
-                >
-                  Name {sortField === 'name' && (sortDirection === 'asc' ? '↑' : '↓')}
-                </th>
-                <th 
-                  className={getSortClass('age')} 
-                  onClick={() => handleSort('age')}
-                >
-                  Age {sortField === 'age' && (sortDirection === 'asc' ? '↑' : '↓')}
-                </th>
-                <th 
-                  className={getSortClass('position')} 
-                  onClick={() => handleSort('position')}
-                >
-                  Position {sortField === 'position' && (sortDirection === 'asc' ? '↑' : '↓')}
-                </th>
-                <th 
-                  className={getSortClass('average')} 
-                  onClick={() => handleSort('average')}
-                >
-                  Average {sortField === 'average' && (sortDirection === 'asc' ? '↑' : '↓')}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {sortedPlayers.map((player, index) => (
-                <tr key={index}>
-                  <td>{player.name}</td>
-                  <td>{player.age}</td>
-                  <td>{player.position}</td>
-                  <td>{player.average.toFixed(1)}</td>
+          
+          <div className="overflow-x-auto rounded-lg">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr>
+                  {['name', 'age', 'position', 'average'].map((field) => (
+                    <th 
+                      key={field}
+                      onClick={() => handleSort(field as SortField)}
+                      className="bg-primary text-left p-4 cursor-pointer hover:bg-primary-hover 
+                               transition-colors duration-200 first:rounded-tl-lg last:rounded-tr-lg"
+                    >
+                      {field.charAt(0).toUpperCase() + field.slice(1)}
+                      {getSortIndicator(field as SortField)}
+                    </th>
+                  ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {sortedPlayers.map((player, index) => (
+                  <tr 
+                    key={index}
+                    className={`hover:bg-[#393046] cursor-pointer transition-colors duration-200 
+                              ${index % 2 === 0 ? 'bg-[#1b1b1b]' : 'bg-[#222031]'}
+                              ${index === sortedPlayers.length - 1 ? 'last:rounded-b-lg' : ''}`}
+                  >
+                    <td className="p-4">{player.name}</td>
+                    <td className="p-4">{player.age}</td>
+                    <td className="p-4">{player.position}</td>
+                    <td className="p-4">{player.average.toFixed(1)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
 
-
-      {/* Sekcja pobierania widoku FM */}
-      <div className="download-view-section">
-        <h2>Download view for Football Manager</h2>
-        <p>Click the button below to download a view that can be imported into Football Manager.</p>
+      {/* Download Section */}
+      <div className="bg-[#151515] p-8 rounded-xl shadow-md">
+        <h2 className="text-2xl font-semibold mb-4 text-primary">Download view for Football Manager</h2>
+        <p className="text-lg mb-4 text-gray-300">
+          Click the button below to download a view that can be imported into Football Manager.
+        </p>
         <button 
-          className="download-button" 
           onClick={handleDownloadView}
+          className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-medium 
+                   tracking-wide transition-all duration-300 
+                   hover:bg-primary-hover hover:shadow-xl 
+                   active:translate-y-0 active:shadow-md"
         >
           Download view
         </button>
       </div>
-      
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../css/Accordion.css'; // Import your CSS styles here
 
 interface FAQItem {
   question: string;
@@ -18,18 +17,36 @@ const FAQAccordion: React.FC<FAQProps> = ({ items }) => {
   };
 
   return (
-    <div className="faq-accordion">
+    <div className="max-w-[1200px] mx-auto p-4 md:p-8">
       {items.map((item, index) => (
-        <div key={index} className="faq-item">
+        <div 
+          key={index} 
+          className="mb-4 border border-border-color rounded-xl overflow-hidden 
+                     bg-[#151515] shadow-md"
+        >
           <button
-            className={`faq-question ${openIndex === index ? 'active' : ''}`}
+            className={`w-full p-4 md:p-6 text-left cursor-pointer
+                       flex justify-between items-center
+                       text-base md:text-lg font-medium
+                       transition-all duration-400 ease-in-out
+                       hover:bg-[#393046] hover:-translate-y-[1px]
+                       ${openIndex === index 
+                         ? 'bg-primary text-white' 
+                         : 'bg-[#1b1b1b] text-gray-200'}`}
             onClick={() => toggleItem(index)}
           >
             {item.question}
-            <span className="faq-icon">{openIndex === index ? '-' : '+'}</span>
+            <span className={`ml-4 text-xl font-bold transition-transform duration-400
+                            ${openIndex === index ? 'rotate-180' : ''}`}>
+              {openIndex === index ? '−' : '+'}
+            </span>
           </button>
+          
           {openIndex === index && (
-            <div className="faq-answer">{item.answer}</div>
+            <div className="p-4 md:p-6 bg-[#1b1b1b] text-gray-200 border-t border-border-color
+                          leading-relaxed animate-slideDown">
+              {item.answer}
+            </div>
           )}
         </div>
       ))}

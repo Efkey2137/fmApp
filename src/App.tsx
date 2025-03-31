@@ -11,6 +11,7 @@ import SaveIdeas from "./pages/SaveIdeas";
 import Home from "./pages/Dashboard"
 import FAQ from "./pages/Faq"
 import RateTeam from "./pages/RateTeam";
+import "./index.css";
 
 
 function App() {

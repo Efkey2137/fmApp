@@ -26,7 +26,7 @@ body {
 
 /* MAIN CONTENT */
 main {
-  margin-left: 300px;
+  margin-left: 19dvw;
   padding: 2dvh;
   overflow-y: auto;
   width: calc(100% - 300px);
