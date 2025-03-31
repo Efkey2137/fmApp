@@ -6,7 +6,6 @@ interface FaqCsvItem {
   Polski: string;
   Angielski: string;
   Odpowiedź: string;
-  DiscordLink: string;
 }
 
 const FAQ: React.FC = () => {
@@ -18,11 +17,8 @@ const FAQ: React.FC = () => {
 
   const faqItems = data?.map(item => ({
     question: item.Polski,
-    answer: item.DiscordLink 
-      ? `${item.Odpowiedź} <a href="${item.DiscordLink}" target="_blank" rel="noopener noreferrer">Kliknij tutaj</a>` 
-      : item.Odpowiedź
+    answer: item.Odpowiedź
   })) || [];
-  
 
   return (
     <div className="max-w-[1400px] mx-auto p-8 min-h-screen">
