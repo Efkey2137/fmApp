@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* GLOBAL SETTINGS */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
@@ -7,6 +10,17 @@
   padding: 0;
   box-sizing: border-box;
 }
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE i Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
 
 body {
   background: #333;
@@ -25,13 +39,14 @@ body {
 }
 
 /* MAIN CONTENT */
+/* MAIN CONTENT */
 main {
-  margin-left: 19dvw;
+  transition: margin-left 0.3s ease, width 0.3s ease;
   padding: 2dvh;
   overflow-y: auto;
-  width: calc(100% - 300px);
   height: 100dvh;
 }
+
 
 /* Custom scrollbar */
 main::-webkit-scrollbar {
@@ -49,6 +64,18 @@ main::-webkit-scrollbar-thumb {
 
 main::-webkit-scrollbar-thumb:hover {
   background: #7a50cc;
+}
+
+@media (min-width: 769px) {
+  main {
+    margin-left: 300px;
+    width: calc(100% - 300px);
+  }
+
+  main.menu-collapsed {
+    margin-left: 80px;
+    width: calc(100% - 80px);
+  }
 }
 
 @media (max-width: 768px) {
