@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import Navigation from "./components/Navigation";
 import RatePlayer from "./pages/RatePlayer";
 import TrackProgress from "./pages/TrackProgress";
@@ -24,6 +25,7 @@ function App() {
   return (
     <Router>
       <Analytics/>
+      <SpeedInsights/>
       <div className="App">
         <Navigation onCollapseChange={handleCollapse} />
         <main 
