@@ -3,8 +3,8 @@ import useFetch from "../hooks/useFetch";
 import useCustomSort from "../hooks/useCustomSort";
 import SearchInput from "./WonderkidsComponents/SearchInput";
 import WonderkidsTable from "./WonderkidsComponents/WonderkidsTable";
-import PageHeader from "./WonderkidsComponents/PageHeader";
-import { loadWonderkidsData } from "./WonderkidsComponents/dataUtils";
+import PageHeader from "../components/shared/PageHeader";
+import { loadMultipleCsvData  } from "../utils/dataUtils";
 
 const Wonderkids: React.FC = () => {
     const { fetchCsvData } = useFetch();
@@ -13,15 +13,19 @@ const Wonderkids: React.FC = () => {
     const { sortedData, sortData, sortKey, sortDirection } = useCustomSort(data);
 
     useEffect(() => {
-        loadWonderkidsData(fetchCsvData, setData);
-    }, [fetchCsvData]);
+        const files = [{ file: "./Wonderkids.csv" }];
+        loadMultipleCsvData(files, fetchCsvData, setData);
+      }, [fetchCsvData]);
 
     const filteredData = filterData(sortedData, searchQuery);
     const headers = data.length > 0 ? Object.keys(data[0]) : [];
 
     return (
         <div className="flex flex-col w-full text-center overflow-x-hidden">
-            <PageHeader />
+            <PageHeader 
+        title="Wonderkids – The Future Stars of Football" 
+        description="This section features a list of the most talented young players recognized as wonderkids..." 
+      />
             
             <SearchInput 
                 searchQuery={searchQuery} 

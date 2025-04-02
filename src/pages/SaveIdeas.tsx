@@ -1,27 +1,16 @@
 import React, { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
-
+import PageHeader from "../components/shared/PageHeader";
+import CategorySection from "./SaveIdeasComponents/CategorySection";
+import { loadCsvData } from "../utils/dataUtils";
 
 const SaveIdeas: React.FC = () => {
   const { fetchCsvData } = useFetch();
   const [data, setData] = useState<any[]>([]);
 
   useEffect(() => {
-    const loadCsvData = (file: string, setData: React.Dispatch<React.SetStateAction<any[]>>) => {
-      fetchCsvData(file, (parsedData) => {
-        if (Array.isArray(parsedData)) {
-          const cleanedData = parsedData.filter(row => row && Object.keys(row).length > 0);
-          setData(cleanedData);
-        } else {
-          console.error(`Parsed data from ${file} is not an array:`, parsedData);
-        }
-      });
-    };
-
-    loadCsvData("./SaveIdeas.csv", setData);
+    loadCsvData("./SaveIdeas.csv", fetchCsvData, setData);
   }, [fetchCsvData]);
-
-  const formatHeader = (header: string) => header.replace(/_/g, " ").toUpperCase();
 
   const groupByCategory = (data: any[]) => {
     return data.reduce((acc, item) => {
@@ -38,27 +27,14 @@ const SaveIdeas: React.FC = () => {
 
   return (
     <div className="container mx-auto p-8">
-      <h1 className="text-4xl text-center mb-8 font-black">Save Ideas</h1>
+      <PageHeader title="Save Ideas" />
+      
       {Object.entries(groupedData).map(([category, items]) => (
-        <div key={category} className="mt-8">
-          <h2 className="text-2xl text-center mb-4 font-semibold">{category}</h2>
-          <div className="grid grid-cols-1 gap-4">
-            {(items as any[]).map((idea, index) => (
-              <div 
-                key={index} 
-                className="bg-[#1b1b1b] border-2 border-primary rounded p-4 
-                         text-left flex flex-col justify-between 
-                         transition-all duration-300 ease-in-out
-                         hover:border-primary-hover"
-              >
-                <h3 className="text-xl font-semibold mb-2 flex items-center">
-                  {idea.club} - {idea.league}
-                </h3>
-                <p className="text-gray-300">{idea.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <CategorySection 
+          key={category}
+          category={category} 
+          items={items as any[]} // Dodana asercja typu
+        />
       ))}
     </div>
   );
